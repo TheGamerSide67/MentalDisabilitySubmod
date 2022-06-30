@@ -23,8 +23,8 @@ And of course, I hope you learn some things too!
 
 
 Future plans:
-The ability to tell Monika that you were recently diagnosed with a mental illness
-The ability for Monika to detect if the player is lying about their mental illnesses
-The ability to tell Monika that you will be gone (goodbye and BRB) to go to your therapist
-The ability for Monika to detect the player wanting to learn more about mental illnesses, and warn the player of harmful sites to the understanding of mental illnesses
+The ability to tell Monika that you were recently diagnosed with a mental illness.
+The ability for Monika to detect if the player is lying about their mental illnesses.
+The ability to tell Monika that you will be gone (goodbye and BRB) to go to your therapist.
+The ability for Monika to detect the player wanting to learn more about mental illnesses, and warn the player of harmful sites to the understanding of mental illnesses.
 And much more I don't want to spoil!
