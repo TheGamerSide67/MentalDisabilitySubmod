@@ -15,4 +15,16 @@ Same thing if you have any suggestions, feel free to also contact me on Discord 
 
 How to install the submod:
 
-  To install the submod you can either follow the link here; [insert Google Drive Link here please!] or you can
+  To install the submod you can either follow the link here; [insert Google Drive Link here please!] or you can click on the "code" tab above this how to file!
+  Once you have thee Zip file added, make sure to extract all of the file into your "submod" folder in your DDLC directory! Or you can extract them into it's own file, and copy the files into the "Submod" folder that way.
+
+Have fun learning and talking to your Monika!
+And of course, I hope you learn some things too!
+
+
+Future plans:
+The ability to tell Monika that you were recently diagnosed with a mental illness
+The ability for Monika to detect if the player is lying about their mental illnesses
+The ability to tell Monika that you will be gone (goodbye and BRB) to go to your therapist
+The ability for Monika to detect the player wanting to learn more about mental illnesses, and warn the player of harmful sites to the understanding of mental illnesses
+And much more I don't want to spoil!
