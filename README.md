@@ -15,7 +15,7 @@ Same thing if you have any suggestions, feel free to also contact me on Discord 
 
 How to install the submod:
 
-  To install the submod you can either follow the link here; [insert Google Drive Link here please!] or you can click on the "code" tab above this how to file!
+  To install the submod you can either follow the link here; https://drive.google.com/drive/folders/1jqGCZOYajwVSjHBMQCnciGgyoLHUoRFQ?usp=sharing or you can click on the "code" tab above this how to file!
   Once you have thee Zip file added, make sure to extract all of the file into your "submod" folder in your DDLC directory! Or you can extract them into it's own file, and copy the files into the "Submod" folder that way.
 
 Have fun learning and talking to your Monika!
