@@ -47,34 +47,33 @@ init 5 python:
         )
     )
 
+
 label mentalrhythmgames:
-    m "I probably have already mentioned this before..."
-    m "Have you ever heard of rhythm games, [player]?"
-    m "Well, I found an interested fact about them recently!"
-    m "Most people who have ADHD typically like fast paced rhythm games."
-    m "The most popular examples of these are Osu! and Taiko No Tatsujin!"
-    m "The fast pace action of these rhythm games appeal to the fast pace mind set that people with ADHD have."
+    m 1eua "I probably have already mentioned this before..."
+    m 3eua "Have you ever heard of rhythm games, [player]?"
+    m 3eua "Well, I found an interested fact about them recently!"
+    m 4eua "Most people who have ADHD typically like fast paced rhythm games."
+    m 7eua "The most popular examples of these are Osu! and Taiko No Tatsujin!"
+    m 3eub "The fast pace action of these rhythm games appeal to the fast pace mind set that people with ADHD have."
     if persistent._player_has_ADHD == False:
-        m "That doesn't mean that you can't enjoy rythm games, [player]!"
-        m "Maybe you even play rhythm games already."
-        m "If you do, I would like to see you play sometime."
+        m 1eud "That doesn't mean that you can't enjoy rythm games, [player]!"
+        m 3eud "Maybe you even play rhythm games already."
+        m 3hub "If you do, I would like to see you play sometime."
     else:
-        m "Maybe you play rhythm games too [player]."
-        m "If you do, I would like to see you play sometime."
-    m "Well, the difficult charting also plays a role in the enjoyment of rhythm games too."
-    m "If the charting is too hard, people with ADHD typically get bored of it."
-    extend " Or even get fixated on it to the point where they spend hours on the same chart!"
-    m "But if it's too easy, then it's not enjoyable unless they are a beginner."
-    m "Not to mention that the music also plays an important role aswell."
-    m "I guess this can also explain why people with ADHD typically like more energetic music, like electronic dance or dubstep, over another genre."
-    m "Gosh, there is a lot to say off of a rhythm game isn't there [player]?"
-    m "I won't go any further, since we could be here all day talking about rhythm games."
+        m 3eub "Maybe you play rhythm games too [player]."
+        m 3hub "If you do, I would like to see you play sometime."
+    m 7eud "Well, the difficult charting also plays a role in the enjoyment of rhythm games too."
+    m 1euc "If the charting is too hard, people with ADHD typically get bored of it."
+    extend 3euc " Or even get fixated on it to the point where they spend hours on the same chart!"
+    m 4eud "But if it's too easy, then it's not enjoyable unless they are a beginner."
+    m 3rua "Not to mention that the music also plays an important role aswell."
+    m 3hua "I guess this can also explain why people with ADHD typically like more energetic music, like electronic dance or dubstep, over another genre."
+    m 1rusdlb "Gosh, there is a lot to say off of a rhythm game isn't there [player]?"
+    m 3eua "I won't go any further, since we could be here all day talking about rhythm games."
     if mas_isMoniHappy(higher=True) and renpy.random.randint(1,5) == 5:
-        m "Or maybe you would like that more, [player]."
-    m "Anyways, thanks for listening!"
+        m 1tuu "Or maybe you would like that more, [player]."
+    m 3hub "Anyways, thanks for listening!"
 return
-
-
 
 
 label IWantToBeLikeYou:
