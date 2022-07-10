@@ -1,0 +1,17 @@
+name: "Run checks on push"
+
+on:
+  push:
+    paths: [ "**.rpy" ]
+
+jobs:
+  check:
+    name: "Check submod code"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: "Checkout"
+        uses: "actions/checkout@v2"
+
+      - name: "Check"
+        uses: "friends-of-monika/submod-check-action@v2"
