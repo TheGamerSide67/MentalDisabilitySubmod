@@ -4,6 +4,9 @@ on:
   push:
     paths: [ "**.rpy" ]
 
+  pull_request:
+    paths: [ "**.rpy" ]
+
 jobs:
   check:
     name: "Check submod code"
