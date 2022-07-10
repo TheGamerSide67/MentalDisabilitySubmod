@@ -119,7 +119,7 @@ init 5 python:
             category=["mental health"],
             prompt="Autism",
             conditional="mas_seenLabels(['mentalhealth_adhd'])",
-            random=True
+            action=EV_ACT_RANDOM
         ),
         code="EVE"
     )
