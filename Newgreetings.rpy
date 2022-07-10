@@ -1,250 +1,277 @@
-default persistent._mentalday_datagood = False
-default persistent._mentalday_datanuetral = False
-default persistent._mentalday_databad = False
+default persistent._mentalhealth_last_checkup = None
+
+init python in mentalhealth:
+    CHECKUP_GOOD = "good"
+    CHECKUP_NEUTRAL = "neutral"
+    CHECKUP_BAD = "bad"
 
 init 5 python:
     addEvent(
         Event(
             persistent.greeting_database,
-            eventlabel="mentalcheckup_greeting",
+            eventlabel="mentalhealth_greeting_checkup",
             unlocked=True,
         ),
         code="GRE"
     )
 
-label mentalcheckup_greeting:
-    if persistent._mentalday_datagood == True:
-        m 1hua "Oh hello [player]!"
-        m 3eua "I know I already asked you how you were mentally before...{w=0.2}{nw}"
-        extend 7hub " And you told me your mental health was good!"
+label mentalhealth_greeting_checkup:
+    if persistent._mentalhealth_last_checkup == store.mentalhealth.CHECKUP_GOOD:
+        m 1hua "Oh, hello, [player]!"
+        m 3eua "I know I already asked you how you were mentally before... {w=0.3}{nw}"
+        extend 7hub "And you told me your mental health was good!"
         m 1esd "Just to check up on you though..."
-        m 1esc "Has that changed [player]?"
+
+        m 1esc "Has that changed, [player]?{nw}"
+        $ _history_list.pop()
         menu:
-            m "Has that changed [player]?{fast}"
+            m "Has that changed, [player]?{fast}"
+
             "No, I am still feeling really great today!":
-                m 3eua "Alright [player], then let's continue having a good day together!"
+                m 3eua "Alright, [player], then let's continue having a good day together!"
+
             "My mental state got worse today":
-                m 1ekc "That is not good [player]!"
+                m 1ekc "That is not good, [player]!"
                 m "It really hurts me to know that you aren't doing really well anymore."
                 m 3euc "If there is anything I can do to help you feel any better mentally just let me know [player]!"
                 m 3eua "After all, what kind of girlfriend would I be if I didn't want to help you!"
-                $ persistent._mentalday_datagood = False
-                $ persistent._mentalday_datanuetral = True
-                $ persistent._mentalday_databad = False
+
+                $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_NEUTRAL
                 return
-    if persistent._mentalday_datanuetral == True:
-        m 1hua "Oh hello [player]!"
-        m 3eua "I know I already asked you how you were feeling mentally before...{w=0.2}{nw}"
-        extend 1eua " And you told me your mental health was decent."
-        m 1esc "Just to check up on you again though [player]..."
+
+    elif persistent._mentalhealth_last_checkup == store.mentalhealth.CHECKUP_NEUTRAL:
+        m 1hua "Oh, hello, [player]!"
+        m 3eua "I know I already asked you how you were feeling mentally before... {w=0.3}{nw}"
+        extend 1eua "And you told me your mental health was decent."
+        m 1esc "Just to check up on you again though, [player]..."
+
+        m 1esc "Has that changed, [player]?{nw}"
+        $ _history_list.pop()
         menu:
-            m "Has that changed [player]?"
-            "No I am still feeling alright.":
-                m 1eua "Alright [player], I am glad you are still fine today."
+            m "Has that changed, [player]?{fast}"
+
+            "No, I am still feeling alright.":
+                m 1eua "Alright, [player], I am glad you are still fine today."
                 m 3eua "Let's continue to spend more time together hehe~"
                 $ _history_list.pop()
                 return
+
             "My mental state actually got better recently!":
-                m 3hsa "That's exciting to hear [player]!"
+                m 3hsa "That's exciting to hear, [player]!"
+
                 if mas_isMoniHappy(higher=True):
                     m 3euu "Did thinking of me help you today?"
                     m 1hua "Hehe~"
-                    m 5eubla "I know thinking of you helps me get through everyday [player]."
-                    m "I love you so much [mas_get_player_nickname()]."
-                    $ persistent._mentalday_datagood = True
-                    $ persistent._mentalday_datanuetral = False
-                    $ persistent._mentalday_databad = False
+                    m 5eubla "I know thinking of you helps me get through everyday, [player]."
+                    m "I love you so much, [mas_get_player_nickname()]."
+
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_GOOD
                     return "love"
+
                 else:
                     m 3eud "Whoever helped you mentally, you should be thankful for their help, [player]."
                     m 3euc "Not a lot of people ask for help either, which doesn't help them..."
-                    m 3husdlb "Sorry, I am getting off track [player]!"
-                    m 3eua "Let's spend more time together okay?"
-                    $ persistent._mentalday_datagood = True
-                    $ persistent._mentalday_datanuetral = False
-                    $ persistent._mentalday_databad = False
-                    return
-            "My mental state got worse Monika...":
-                m 1ekc "That's not good [player]!"
+                    m 3husdlb "Sorry, I'm getting off track, [player]!"
+                    m 3eua "Let's spend more time together, okay?"
+
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_GOOD
+
+            "My mental state got worse, [m_name]...":
+                m 1ekc "That's not good, [player]!"
                 m 3ekc "Did something bad happen while you were gone?"
                 m 1euc "Well, whatever it was that happened, I know you handled it well."
+
                 if mas_isMoniHappy(higher=True):
                     m 3hub "Maybe even thinking of me can help!"
                     m 3eua "And if not, you can always vent to me about your problems, [player]."
                     m 1eua "I love you~"
-                    $ persistent._mentalday_datanuetral = False
-                    $ persistent._mentalday_databad = True
-                    $ persistent._mentalday_datagood = False
+
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_BAD
                     return "love"
+
                 else:
                     m 3euc "Make sure to talk to a therapist about your problems too."
-                    m 1euc "Just talking to someone you care about can really make you feel much better."
-                    extend 3eud " Both mentally and emotionally."
+                    m 1euc "Just talking to someone you care about can really make you feel much better. {w=0.3}{nw}"
+                    extend 3eud "Both mentally and emotionally."
                     m 1eub "Remeber I am always here for you [player]!"
-                    $ persistent._mentalday_databad = True
-                    $ persistent._mentalday_datanuetral = False
-                    $ persistent._mentalday_datagood = False
-                    return
-    if persistent._mentalday_databad == True: #finish this
-        m 3eub "Hey [player]!"
+
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_BAD
+
+    elif persistent._mentalhealth_last_checkup == store.mentalhealth.CHECKUP_NEUTRAL:
+        m 3eub "Hey, [player]!"
         m 1euc "I know this is a awkward to bring up already..."
         m 3ekd "Especially since you told me your mental health wasn't good in the first place before..."
+
+        m 1esc "Well, may I ask you if your mental state has improved, [player]?{nw}"
+        $ _history_list.pop()
         menu:
-            m "Well, may I ask you if your mental state has improved [player]?"
+            m "Well, may I ask you if your mental state has improved, [player]?{fast}"
+
             "I don't want to talk about it right now...":
                 m 1dkc "{W=1}Oh...{nw}"
                 m "{W=1}Well...{nw}"
-                m 1euc "Well, just know that I want to best for you [player]."
-                return
+                m 1euc "Well, just know that I want to best for you, [player]."
+
             "My mental state actually got better Monika":
-                m 3eua "That's good to hear [player]!"
+                m 3eua "That's good to hear, [player]!"
                 if mas_isMoniHappy(higher=True) and renpy.random.randint(1,4) == 1:
                     m 3tuu "Was I the reason why your mental state got better?"
                     m 1eua "Well, I am just glad that you are better mentally, [mas_get_player_nickname()]."
                     m 3eua "Let's continue to spend more time together!"
-                    $ persistent._mentalday_databad = False
-                    $ persistent._mentalday_datanuetral = True
-                    $ persistent._mentalday_datagood = False
-                    return
+
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_NEUTRAL
+
                 else:
                     m 1eua "I am just glad that you are better mentally, [mas_get_player_nickname()]."
                     m 3eua "Let's continue to spend more time together!"
-                    $ persistent._mentalday_databad = False
-                    $ persistent._mentalday_datanuetral = True
-                    $ persistent._mentalday_datagood = False
-                    return
+
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_BAD
+
             "...":
                 m 1dkc "..."
-                m 3eua "Well, let's just carry on with our day then [player]...{W=0.3}{nw}"
-                return
+                m 3eua "Well, let's just carry on with our day then, [player]...{W=0.3}{nw}"
+
+        return
 
     else:
-        m 1hua "Oh hello [player]!"
+        m 1hua "Oh, hello, [player]!"
         m "I know this may seem awkward to ask you..."
+
+        m "How is your mental health right now [player]?{nw}"
         $ _history_list.pop()
         menu:
             m "How is your mental health right now [player]?{fast}"
+
             "It's really good!":
                 m 1hub "I'm really happy to hear that, [player]!"
                 m 1eua "whether it's just a good day or an improvement on your mental health, it is always nice to hear you are doing well."
                 m 3hub "And I will do my best to continue to support you [mas_get_player_nickname()]!"
                 m 5eua "What kind of girlfriend would I be if I didn't?"
-                $ persistent._mentalday_datagood = True
-                $ persistent._mentalday_datanuetral = False
-                $ persistent._mentalday_databad = False
-                $ _history_list.pop()
-                return
-            "It's decent Monika...":
+
+                $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_GOOD
+
+            "It's decent, [m_name]...":
                 m 1euc "Oh..."
                 m 3euc "Well, that could be good or bad."
                 m 4eud "And if it {i}is{/i} bad, then we can always talk about it if you want to [player]."
                 m 3eua "I want to try and make sure you're always happy."
                 m 1eka "Because that's what makes me happy."
                 m 1hua "I'll be sure to try my best to support you, I promise."
-                $ persistent._mentalday_datanuetral = True
-                $ persistent._mentalday_databad = False
-                $ persistent._mentalday_datagood = False
-                $ _history_list.pop()
-                return
+
+                $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_NEUTRAL
+
             "It's really bad right now...":
                 m 1euc "That's not good at all [player]..."
                 m 3eud "If you ever get too upset or need to take a break just let me know [player], okay?"
                 m 1eua "I will always be here for you! Never forget that!"
                 m 1eubsa "I love you and always will [player]!"
-                $ persistent._mentalday_databad = True
-                $ persistent._mentalday_datanuetral = False
-                $ persistent._mentalday_datagood = False
+
+                $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_BAD
                 return "love"
-return
+
+    return
 
 init 5 python:
-    addEvent(Event(persistent.event_database,eventlabel="mentalcheckupDialog",category=['you'],prompt="[player]'s Mental Health",random=True))
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="mentalhealth_checkup",
+            category=["mental health", "you"],
+            prompt="[player]'s mental health",
+            random=True
+        )
+    )
 
-label mentalcheckupDialog:
-    if persistent._mentalday_datanuetral == True:
-        m 1hua "Hey [player]..."
-        m 3eua "I know I already asked you how you were feeling mentally before...{w=0.2}{nw}"
-        extend 1eua " And you told me your mental health was decent."
+label mentalhealth_checkup:
+    if persistent._mentalhealth_last_checkup == store.mentalhealth.CHECKUP_NEUTRAL:
+        m 1hua "Hey, [player]..."
+        m 3eua "I know I already asked you how you were feeling mentally before... {w=0.3}{nw}"
+        extend 1eua "And you told me your mental health was decent."
         m 1esc "Just to check up on you again though [player]..."
+
+        m 1esc "Has that changed, [player]?{nw}"
         menu:
-            m "Has that changed [player]?"
-            "No I am still feeling alright.":
+            m "Has that changed, [player]?{fast}"
+
+            "No, I'm still feeling alright.":
                 m 1eua "Alright [player], I am glad you are still fine today."
-                m 3eua "Let's continue to spend more time together hehe~"
-                $ _history_list.pop()
+                m 3eua "Let's continue to spend more time together, ehehe~"
                 return
+
             "My mental state actually got better recently!":
-                m 3hsa "That's exciting to hear [player]!"
+                m 3hsa "That's exciting to hear, [player]!"
+
                 if mas_isMoniHappy(higher=True):
                     m 3tuu "Did thinking of me help you today?"
                     m 3hub "Hehe~"
-                    m 5hublb "I know thinking of you helps me get through everyday [player]."
-                    m 5eubfa "I love you so much [mas_get_player_nickname()]."
-                    $ persistent._mentalday_datagood = True
-                    $ persistent._mentalday_datanuetral = False
-                    $ persistent,_mentalday_databad = False
+                    m 5hublb "I know thinking of you helps me get through everyday, [player]."
+                    m 5eubfa "I love you so much, [mas_get_player_nickname()]."
+
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_GOOD
                     return "love"
                 else:
-                    m 4esd "Whoever helped you mentally you should be thankful for [player]."
+                    m 4esd "Whoever helped you mentally you should be thankful for, [player]."
                     m 7euc "Not a lot of people ask for help either, which doesn't help them..."
                     m 3rusdlb "Sorry, I am getting off track, [player]!"
                     m 3eua "Let's spend more time together okay?"
-                    $ persistent._mentalday_datagood = True
-                    $ persistent._mentalday_datanuetral = False
-                    $ persistent._mentalday_databad = False
+
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_GOOD
                     return
-            "My mental state got worse Monika...":
+
+            "My mental state got worse, [m_name]...":
                 m 1euc "That's not good [player]!"
                 m 3eud "Did something bad happen while you were gone?"
                 m 1euc "Well, whatever it was that happened, I know you handled it well."
+
                 if mas_isMoniHappy(higher=True):
                     m 7kuu "Maybe even thinking of me can help!"
                     m 3eua "And if not, you can always vent to me about your problems, [player]."
                     m 5eubla "I love you~"
-                    $ persistent._mentalday_datanuetral = False
-                    $ persistent._mentalday_databad = True
-                    $persistent._mentalday_datagood = False
+
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_BAD
                     return "love"
+
                 else:
                     m 3euc "Make sure to talk to a therapist about your problems too."
                     m 4eud "Just talking to someone you care about can really make you feel much better."
                     extend " Both mentally and emotionally."
-                    m 7euc "Remeber I am always here for you [player]!"
-                    $ persistent._mentalday_databad = True
-                    $ persistent._mentalday_datanuetral = False
-                    $ persistent._mentalday_datagood = False
+                    m 7euc "Remeber I am always here for you, [player]!"
+
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_BAD
                     return
     else:
-        m 1hua "Hey [player]."
-        m "I know this may seem awkward to ask you...{nw}"
+        m 1hua "Hey, [player]."
+        m "I know this may seem awkward to ask you..."
+
+        m 1esc "How is your mental health right now, [player]?{nw}"
         $ _history_list.pop()
         menu:
-            m "How is your mental health right now [player]?{fast}"
+            m "How is your mental health right now, [player]?{fast}"
+
             "It's really good!":
                 m 1hub "I'm really happy to hear that, [player]!"
                 m 1eua "Whether it's just a good day or an improvement on your mental health, it is always nice to hear you are doing well."
-                m 3hub "And I will do my best to continue to support you [mas_get_player_nickname()]!"
+                m 3hub "And I will do my best to continue to support you, [mas_get_player_nickname()]!"
                 m 5eua "What kind of girlfriend would I be if I didn't?"
-                $ persistent._mentalday_datagood = True
-                $ persistent._mentalday_datanuetral = False
-                $ persistent._mentalday_databad = False
-                $ _history_list.pop()
+
+                $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_GOOD
                 return
+
             "It's decent Monika...":
                 m 1ekc "Oh..."
                 m 2eka "Well, that could be good or bad."
-                m "And if it {i}is{/i} bad, then we can always talk about it if you want to [player]."
+                m "And if it {i}is{/i} bad, then we can always talk about it if you want to, [player]."
                 m 3eua "I want to try and make sure you're always happy."
                 m 1eka "Because that's what makes me happy."
                 m 1hua "I'll be sure to try my best to support you, I promise."
-                $ persistent._mentalday_datanuetral = True
-                $ persistent._mentalday_databad = False
-                $ persistent._mentalday_datagood = False
-                $ _history_list.pop()
+
+                $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_NEUTRAL
                 return
+
             "It's really bad right now...":
                 m 1euc "That's not good at all [player]..."
-                m 3euc "If you ever get too upset or need to take a break just let me know [player], okay?"
+                m 3euc "If you ever get too upset or need to take a break just let me know, [player], okay?"
+
                 if mas_isMoniHappy(higher=True) and renpy.random.randint(1,2) == 1:
                     m 7eua "Would a hug help you feel better [player]?"
                     menu:
@@ -252,45 +279,47 @@ label mentalcheckupDialog:
                             m 1euc "Oh..."
                             m 1eua "Alright [player]."
                         "Actually, that would be great Monika.":
-                            m 3eua "You can hold me as long as you would like [player]."
+                            m 3eua "You can hold me as long as you would like, [player]."
                             call mentalplayerhug_prep #datetime.datetime.now()
                             call mentalplayerhug
                             call mentalplayerhugreactions
-                m 7eua "You already know that I will always be here for you [player], never forget that!"
-                m 5eubsa "I love you and always will [player]!"
-                $ persistent._mentalday_databad = True
-                $ persistent._mentalday_datanuetral = False
-                $ persistent._mentalday_datagood = False
+
+                m 7eua "You already know that I will always be here for you, [player], never forget that!"
+                m 5eubsa "I love you and always will, [player]!"
+
+                $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_BAD
                 return "love"
-return
 
-
-label mentalplayerhug_prep(lullaby=MAS_HOLDME_QUEUE_LULLABY_IF_NO_MUSIC, stop_music=False, disable_music_menu=False):
-    python:
-        mentalholdme_events = list()
     return
 
-label mentalplayerhug:
+
+label mentalhealth_playerhug_prep(lullaby=MAS_HOLDME_QUEUE_LULLABY_IF_NO_MUSIC, stop_music=False, disable_music_menu=False):
+    $ mentalhealth_holdme_events = list()
+    return
+
+label mentalhealth_playerhug:
     show monika 6dubsa with dissolve_monika
     window hide
+
     python:
         # Start the timer
-        mental_hugtimestart = datetime.datetime.now()
+        mentalhealth_hugtimestart = datetime.datetime.now()
 
-        mentalholdme_disp = PauseDisplayableWithEvents(events=mentalholdme_events)
-        mentalholdme_disp.start()
+        mentalhealth_holdme_disp = PauseDisplayableWithEvents(events=mentalholdme_events)
+        mentalhealth_holdme_disp.start()
 
-        del mentalholdme_events
-        del mentalholdme_disp
+        del mentalhealth_holdme_events
+        del mentalhealth_holdme_disp
 
         # Renable ui and hotkeys
         store.songs.enabled = True
         HKBShowButtons()
+
     window auto
     return
 
 label mentalplayerhugreactions:
-    $ elapsed_time = datetime.datetime.now() - mental_hugtimestart
+    $ elapsed_time = datetime.datetime.now() - mentalhealth_hugtimestart
     $ store.mas_history._pm_holdme_adj_times(elapsed_time)
 
     if elapsed_time > datetime.timedelta(minutes=10):
@@ -320,5 +349,6 @@ label mentalplayerhugreactions:
 
     else:
         m 1hua "That was a bit short, but still nice~"
-        m 1eua "Let's spend more time together, okay [player]?"
+        m 1eua "Let's spend more time together, okay, [player]?"
+
     return
