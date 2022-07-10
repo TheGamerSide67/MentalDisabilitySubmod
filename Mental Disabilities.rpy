@@ -17,7 +17,7 @@ label mentalhealth_adhd:
     $_history_list.pop()
     menu:
         m "[player], have you heard of ADHD?{fast}"
-        "Yes":
+        "Yes.":
             m 1eub "That's makes me happy to hear!"
             m 3ekc "It's sad that it's not taken as seriously as much as other learning disabilities..."
             m 3eud "It makes it really hard for them to focus or even do anything on their own."
@@ -27,24 +27,24 @@ label mentalhealth_adhd:
             m 1eua "If you don't mind me asking, how did you find out about it?"
             $_history_list.pop()
             menu:
-                "I have ADHD":
+                "I have ADHD.":
                     m 3eua "I'm happy you told me [player]!"
                     m 1ekd "It was disheartening for me to find, that it's often not taken as seriously as other disabilities in the same catagory..."
 
                     $ persistent._mentalhealth_pm_has_adhd = True
                     jump mentalhealth_adhd_end
 
-                "I know someone who has ADHD":
+                "I know someone who has ADHD.":
                     m 3eua "I'm sure they're more than happy to have a friend or family member like you, [player]!"
                     m 1ekd "It was disheartening for me to find, that it's often not taken as seriously as other disabilities in the same catagory..."
                     jump mentalhealth_adhd_end
 
-                "I was taught about ADHD":
+                "I was taught about ADHD.":
                     m 3eub "It's good to know that ADHD is being talked about more."
                     m 1euc "It usually isn't considered a serious of an issue as other disabilities."
                     jump mentalhealth_adhd_end
 
-                "I researched ADHD":
+                "I researched ADHD.":
                     m 3eub "I'm glad that you look for new information."
                     m 7ekd "A lot of people disregaurd new information as boring and tedious to learn."
                     m 3eua "Though I am more than sure that people with ADHD would be more than happy to have a friend like you around, [player]."
@@ -54,7 +54,7 @@ label mentalhealth_adhd:
                     menu:
                         m "Also, if you don't mind me asking. Did you research ADHD because you have ADHD, [player]?{fast}"
 
-                        "Yes":
+                        "Yes.":
                             $ persistent._mentalhealth_pm_has_adhd = True
                             m 4eub "It's good to try to learn more about yourself.{w=0.55}"
                             extend 7hub " It shows that you care about yourself!"
@@ -65,12 +65,12 @@ label mentalhealth_adhd:
                             else:
                                 m 3eua "I hope you already have that person that helps you focus on things, [player]."
 
-                        "No":
+                        "No.":
                             m 1eua "Oh, alright."
                             m 3eua "It's still good to learn everything you can about ourselves. "
                             extend 3hua "Or even others!"
 
-        "No":
+        "No.":
             m 1rkb "That's alright, [player]"
             m 2eka "It's not talked about as much as other learning disabilities."
 
@@ -79,7 +79,7 @@ label mentalhealth_adhd:
             menu:
                 m "Do you want me to tell you about ADHD?{fast}"
 
-                "Yes":
+                "Yes.":
                     m 3eua "Alright then, [player]!"
                     m 3eud "ADHD stands for Attention Deficit Hyperactive Disorder."
                     m 3eud "It is identified as a learning disability. However, it often goes into other areas of the people lives."
@@ -94,10 +94,10 @@ label mentalhealth_adhd:
                     m 3eub "In fact, they also have the ability to hyperfocus--they can be doing something for hours and not be distracted."
                     m 1eua "Thanks for listening, [player]."
 
-                "No":
+                "No.":
                     m 2eka "Oh, alright."
 
-                "Not right now":
+                "Not right now.":
                     m 2eka "I'll be sure to ask later, [player]."
                     return
 
