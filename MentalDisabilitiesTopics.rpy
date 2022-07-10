@@ -51,6 +51,7 @@ label mentalhealth_masking_disability:
 
     return
 
+
 init 5 python:
     addEvent(
         Event(
@@ -62,7 +63,6 @@ init 5 python:
             action=EV_ACT_RANDOM
         )
     )
-
 
 label mentalhealth_rhythm_games:
     m 1eua "I probably have already mentioned this before..."
