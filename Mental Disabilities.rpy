@@ -87,7 +87,7 @@ init 5 python:
     addEvent(
         Event(
             persistent.event_database,
-            eventlabel="mentalAutism",
+            eventlabel="mentalhealthAutism",
             category=['media'],
             prompt="Autism",
             conditional="mas_seenLabels(['mentalADHD'])",
