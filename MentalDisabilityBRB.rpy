@@ -21,14 +21,14 @@ label mental_calmdown_idle:
     m "I hope I didn't upset you!"
     m 3euc "Well, would you like to tell me why you are upset, [player]?{nw}"
     menu:
-        m 3euc "Well, would you like to tell me why you are upset, [player]?"
+        m "Well, would you like to tell me why you are upset, [player]?"
         "Sure.":
             $ PlayerAskedMonikaToVent = True
             m 1eua "Go ahead and tell me everything about why you are upset, [player]."
             m "I will put up a prompt so you can tell me when you are done talking. I don't interrupt you."
             menu:
                 "I am done talking Monika...":
-                jump mental_calmdown_idle_callback
+                    jump mental_calmdown_idle_callback
         "No thanks.":
             $ PlayerAskedMonikaToVent = False
             m 1euc "Oh, alright."
