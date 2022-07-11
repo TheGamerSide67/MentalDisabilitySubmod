@@ -1,7 +1,7 @@
 #random quip for when the player comes back and it calmed down, if they decide to
 #not vent/rant to Monika
 init python:
-    RandomCalmDownWelcome = ["Let's spend more time together!", "Let's make the rest of your day better, together.", "What do you want to do now?"]
+    RandomCalmDownWelcome = ["let's spend more time together!", "let's make the rest of your day better, together.", "what do you want to do now?"]
     RandomCalmDownWelcomeQuip = random.choice(RandomCalmDownWelcome)
 init 5 python:
     addEvent(
@@ -17,21 +17,22 @@ init 5 python:
     )
 
 label mental_calmdown_idle:
-    m 1euc "Need to calm down [player]?"
+    m 1euc "Need to calm down, [player]?"
     m "I hope I didn't upset you!"
-    m 3euc "Well, would you like to tell me why you are upset [player]?"
+    m 3euc "Well, would you like to tell me why you are upset, [player]?{nw}"
     menu:
-        "Sure":
+        m 3euc "Well, would you like to tell me why you are upset, [player]?"
+        "Sure.":
             $ PlayerAskedMonikaToVent = True
-            m 1eua "Go ahead and tell me everything about why you are upset [player]"
-            m "I will put up a prompt so you can tell me when you are done talking, so I don't interrupt you."
+            m 1eua "Go ahead and tell me everything about why you are upset, [player]."
+            m "I will put up a prompt so you can tell me when you are done talking. I don't interrupt you."
             menu:
                 "I am done talking Monika...":
-                    jump mental_calmdown_idle_callback
-        "No thanks":
+                jump mental_calmdown_idle_callback
+        "No thanks.":
             $ PlayerAskedMonikaToVent = False
             m 1euc "Oh, alright."
-            m 3hub "I'll be here waiting for you [player]!"
+            m 3hub "I'll be here waiting for you, [player]!"
 
     #Set up the callback label
     $ mas_idle_mailbox.send_idle_cb("mental_calmdown_idle_callback")
@@ -43,12 +44,12 @@ label mental_calmdown_idle_callback:
 
     m 3eud "Have you calmed down, [player]?"
     menu:
-        "Yes":
+        "Yes.":
             if PlayerAskedMonikaToVent == True:
-                m 1eua "I am glad I was able to help you calm down a little bit [player]."
+                m 1eua "I am glad I was able to help you calm down a little bit, [player]."
             else:
-                m 1eua "I am glad you calmed down [player]."
-        "No":
+                m 1eua "I am glad you calmed down, [player]."
+        "No.":
             m 1euc "Even if you couldn't fully calm down, putting yourself in a calmer enviournment can help calm you down more."
             m 3eub "Like this place!"
     m 1eub "You know, I really wish there was more I could do..."
