@@ -7,16 +7,24 @@ init python:
     KeyWordSuicide = ["suicide"]
 
     def check_says(says):
+        """
+        Determine whether the words spoken by the player contain our intended keywords
+
+        in:
+            says - What players have said
+        return:
+            A string indicating the type of keyword we found
+        """
         says = says.lower()
         for keyword in KeyWordSad:
             if says.find(keyword) != -1:
-                # 发现关键词时立刻停止检查
+                # Stop checking as soon as keywords are found
                 return "Sad"
         for keyword in KeyWordSuicide:
             if says.find(keyword) != -1:
-                # 发现关键词时立刻停止检查
+                # Stop checking as soon as keywords are found
                 return "Suicide"
-        # 如果什么都没找到
+        # If nothing was found
         return None
         
 init 5 python:
@@ -58,25 +66,30 @@ label mental_calmdown_idle:
                 menu:
                     "Are we done?{fast}"
                     "Yes":
+                        # Stopping the while loop
                         $ sayfinish = True
                         m "Okay"
                     "There is something else I would like to say":
                         m "Okay~"
+            
             $ keys = check_says(says)
+            # Checking the results returned by check_says()
             if keys == "Sad":
                 m "I got it"
                 m "I'm sorry to leave you alone with all this sadness, but have some faith in the future"
                 m "Sadness is only temporary, things will always pass later"
                 m "Thank you for telling me about you."
             elif keys == "Suicide":
-                # 写到这里，我突然意识到，我没办法区分说的是"玩家自杀"还是"玩家的朋友自杀"
+                # As I write this, I suddenly realise that I have no way of distinguishing whether this is a "player suicide" or a "player's friend suicide",
+                # or a specific social event
                 m "[player]!!"
                 m "What a big deal to happen......"
                 m "I'm sorry you have to deal with this sadness alone"
                 m "But if you feel you can't hold it together any longer, you can come to me as often as you like"
                 m "I will act as a pillar of strength for you!"
-            else:# None
-                pass#想不出东西了，抱歉~
+            else:# check_says returned None
+                # I can't think of anything else, sorry~ :P
+                pass
             
             jump mental_calmdown_idle_callback
                     
