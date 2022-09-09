@@ -83,7 +83,7 @@ label mentalcheckup_greeting:
             m "Well, may I ask you if your mental state has improved, [player]?"
             "I don't want to talk about it right now...":
                 m 1dkc "{W=1}Oh... {nw}"
-                m "{W=1}Well... {nw}"
+                m "{w=1}Well... {nw}"
                 m 1euc "Well, just know that I want to best for you, [player]."
             "My mental state actually got better Monika!":
                 m 3eua "That's good to hear, [player]!"
@@ -151,6 +151,7 @@ label mentalcheckupDialog:
                 m 3euc "If there is anything I can do to help you feel any better mentally just let me know, [player]!"
                 m 3eua "After all, what kind of girlfriend would I be if I didn't want to help you!"
                 $ persistent._mentaldaydata = "Nuetral"
+        return
     if persistent._mentaldaydata == "Nuetral":
         m 1hua "Hey, [player]..."
         m 3eua "I know I already asked you how you were feeling mentally before... {w=0.2}{nw}"
@@ -193,6 +194,7 @@ label mentalcheckupDialog:
                     extend "Both mentally and emotionally."
                     m 7euc "Remember, I am always here for you, [player]!"
                     $ persistent._mentaldaydata = "Bad"
+        return
     else:
         m 1hua "Hey, [player]."
         m "I know this may seem awkward to ask you...{nw}"
@@ -207,6 +209,7 @@ label mentalcheckupDialog:
                 m 5eua "What kind of girlfriend would I be if I didn't?"
                 $ persistent._mentaldaydata = "Good"
                 $ _history_list.pop()
+                return
             "It's decent Monika...":
                 m 1ekc "Oh..."
                 m 2eka "Well, that could be good or bad."
@@ -216,6 +219,7 @@ label mentalcheckupDialog:
                 m 1hua "I'll be sure to try my best to support you, I promise."
                 $ persistent._mentaldaydata = "Nuetral"
                 $ _history_list.pop()
+                return
             "It's really bad right now...":
                 m 1euc "That's not good at all, [player]..."
                 m 3euc "If you ever get too upset or need to take a break just let me know, [player], okay?"
@@ -230,10 +234,10 @@ label mentalcheckupDialog:
                             call mentalplayerhug_prep #datetime.datetime.now()
                             call mentalplayerhug
                             call mentalplayerhugreactions
-                m 7eua "You already know that I will always be here for you, [player], never forget that!"
-                m 5eubsa "I love you and always will, [player]!"
-                $ persistent._mentaldaydata = "Bad"
-                return "love"
+                    m 7eua "You already know that I will always be here for you, [player], never forget that!"
+                    m 5eubsa "I love you and always will, [player]!"
+                    $ persistent._mentaldaydata = "Bad"
+                    return "love"
 return
 
 
@@ -268,15 +272,16 @@ label mentalplayerhugreactions:
     if elapsed_time > datetime.timedelta(minutes=10):
         m 6dubsa "Mmm..."
         m 6eubfa "Oh! You held me for so long even my worries melted away!"
-        m 5eubfa "I hope you feel better now [player], I know I do hehe~"
+        m 5eubfa "I hope you feel better now [player]. {w=0.3}{nw}"
+        extend "I know I do hehe~"
         return
 
     elif elapsed_time > datetime.timedelta(minutes=2):
-            m 6eud "Oh?"
-            m 1hksdlb "Ah..."
-            m 1rksdlb "At that point, I thought we were going to stay like that forever, ahaha..."
-            m 3hubsa "Well, I can't really complain about any moment I get to be held by you~"
-            m 1ekbfb "I hope you feel much better now, [player]."
+            m 6wubso "Oh?"
+            m 6eubfa "You held me for so long, I was starting to melt away too!"
+            m 5eubfa "I'm really glad you wanted to hold me, [player]."
+            m 7hubsa "You already know I always want you to be at your best. {w=0.3}{nw}"
+            extend 1ekbfb "So I hope you feel much better now, [player]."
             show monika 5tubfb at t11 zorder MAS_MONIKA_Z with dissolve_monika
             m 5tubfb "Maybe we could even hug a bit more for good measure?"
             m 5tubfu "Ehehe~"
@@ -287,13 +292,13 @@ label mentalplayerhugreactions:
             m 1eua "I hope you do too."
             m 2rksdla "Well, even if you don't..."
             m 3hubsb "You could always hold me again, ahaha!"
-            m 1hkbfsdlb "Actually...{w=0.5}you can hold me again either way~"
+            m 1hkbfsdlb "Actually...{w=0.5} you can hold me again either way~"
             m 1ekbfa "Just let me know when you want to~"
 
     else:
         m 1hua "That was a bit short, but still nice~"
         m 1eua "Let's spend more time together, okay [player]?"
-    return
+return
 
     # forced greetings after an appointment
 init -1 python in mas_greetings:
@@ -318,13 +323,18 @@ init 5 python:
 #mentalroom_greeting_ear_disability
 
 label mental_return_from_appointment:
-    m "Oh hey, [player]!"
-    m "Sorry, I don't have a full response yet."
-    m "I am still trying to think of what to say right now!"
-    m "I'll let you know when I think of something, okay [player]?"
-    m "Anyways, let's spend more time together!"
+    m 1hub "Welcome back, [player]!"
+    if persistent._mental_player_therapytype == True:
+        m 3eub "Did you learn any new skills?"
+        m 7eub "Or maybe you learned more about yourself?"
+        m 7hub "Either way, I am glad you are back, [mas_get_player_nickname()]!"
 
-    return
+    if not persistent._mental_player_therapytype:
+        m 3eub "I hope your appointment went well!"
+        m 3eka "And if it didn't, I am always here for you, [player]."
+        m 7hub "Either way, I am glad you are back, [mas_get_player_nickname()]!"
+
+return
 
 init 5 python:
     gmr.eardoor.append("mentalroom_greeting_ear_disability")
@@ -332,7 +342,8 @@ init 5 python:
 label mentalroom_greeting_ear_disability:
     m "Autism speaks?"
     m "That doesn't sound too bad...{w=2.0}{nw}"
-    m "Oh my gosh! Why would anyone say that about Autism?"
+    m "Oh my gosh!"
+    m "Why would anyone say that about Autism?"
     jump monikaroom_greeting_choice
 
 

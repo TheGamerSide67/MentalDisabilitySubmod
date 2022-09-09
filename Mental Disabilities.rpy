@@ -70,6 +70,7 @@ label mentalADHD:
                     m 1eua "Thanks for listening, [player]."
                 "No.":
                     m 2eka "Oh, alright."
+                    return "derandom"
                 "Not right now.":
                     m 2eka "I'll be sure to ask later, [player]."
                     
@@ -88,7 +89,7 @@ init 5 python:
         Event(
             persistent.event_database,
             eventlabel="mentalhealthAutism",
-            category=['media'],
+            category=['media', 'mental illnesses'],
             prompt="Autism",
             conditional="mas_seenLabels(['mentalADHD'])",
             random=True
@@ -121,7 +122,7 @@ return
 
 
 init 5 python:
-    addEvent(Event(persistent.event_database,eventlabel="mentalschizophrenia",category=['media'],prompt="Schizophrenia",random=True))
+    addEvent(Event(persistent.event_database,eventlabel="mentalschizophrenia",category=['media', 'mental illnesses', 'philosophy'],prompt="Schizophrenia",random=True))
 
 label mentalschizophrenia:
     m 1eua "[player], have you heard of schizophrenia?"
@@ -156,7 +157,7 @@ label mentalschizophrenia:
 return "love"
 
 init 5 python:
-    addEvent(Event(persistent.event_database,eventlabel="mentalPTSD",category=['media', 'mental illnesses'],prompt="PTSD",random=True))
+    addEvent(Event(persistent.event_database,eventlabel="mentalPTSD",category=['media', 'mental illnesses', 'philosophy'],prompt="PTSD",random=True))
 
 label mentalPTSD:
     m 1eua "Say, [player]..."
@@ -167,7 +168,7 @@ label mentalPTSD:
     m 2eud "To put it bluntly, any person who has encountered a traumatic event of any kind has a chance of developing PTSD."
     m 3euc "Do you know what PTSD stands for [player]?"
     m 7rtd "Well the acronym PTSD stands for Post Traumatic Stress Disorder, and with the name the defintion is essentially given."
-    m 1eksdrc "PTSD is a mental disorder that occurs after a traumatic event .{w=0.3}{nw}"
+    m 1eksdrc "PTSD is a mental disorder that occurs after a traumatic event. {w=0.3}{nw}"
     extend 3eksdru "Not a very descriptive defintion, is it [mas_get_player_nickname()]?"
     m 3ekc "Well PTSD is described to naturally occur after a traumatic event takes place."
     m 3ekd "However, PTSD is usually only diagnosed when it becomes Chronic. You see [player], in most cases when we go through a traumatic experience our mind will overcome and heal from this naturally overtime."
@@ -190,7 +191,7 @@ label PTSDEnd:
 return "love"
 
 init 5 python:
-    addEvent(Event(persistent.event_database,eventlabel="mentaldementia",category=['media'],prompt="Dementia",random=True))
+    addEvent(Event(persistent.event_database,eventlabel="mentaldementia",category=['media', 'philosophy'],prompt="Dementia",random=True))
 
 label mentaldementia:
     m 1eua "Hey, [player]."
@@ -208,8 +209,84 @@ label mentaldementia:
     m 7euc "That is not to say that it is all bad though..."
     m 3eud "There was a lot of research done to create this song!"
     m 4wuo "It took them 3 years!{w=0.4} 3 years to make this experience!"
-    m 3eua "Well, if you ever have the free time, I would highly suggest listing to it, [player]."
+    m 3eua "Well, if you ever have the free time, I would highly suggest listening to it, [player]."
     m 1eua "And if you ever get too upset, {w=0.1}{nw}"
     extend 3hub "I will always be here to cheer you up!"
 return
 
+init 5 python:
+    addEvent(Event(persistent.event_database,eventlabel="monika_Bipolar",category=['media', 'mental illnesses'],prompt="Bipolar",random=True))
+
+label monika_Bipolar:
+    m 1eua "Hey [player], I have been doing more research on mental disabilities again."
+    m 3eua "You might have heard of this one before [player]!"
+    m 3euc "The mental disability I want to talk to you about today is Bipolar."
+    m 3euc "There are three known types of bipolar.{w=0.4}{nw} "
+    extend 3esc "Bipolar 1, 2, and Cyclothymic disorder."
+    m 3eud "Talking about the differences in this mental disability can take a while, {w=0.2}{nw}"
+    extend 3eub "so would you like to talk about it right now [player]?"
+    $_history_list.pop()
+    menu:
+     "Yes":
+        m 1eub "I am really excited for this one!"
+        m 3eua "Bipolar 1 is actually the most common form of bipolar [player]!"
+        extend 3eud "However it's also one of the more severe types out there."
+        m 4esc "Well, as you already know [player], bipolar attacks also known as manic episodes cause the effected person to be sent into either 'highs' or 'lows'."
+        m 7esb " Which can either give them extreme amounts of energy or will to do something unusually, {w=0.6}{nw}"
+        extend 3rusdlc "or it can also send them into a state of mild to even {i}severe{/i} depression episodes."
+        m 1euc "Unfourtanely, this usually leads to a cycle between the two."
+        m 3eud "Have you ever heard of the term {i}manic depression{/i}? Well that's where it comes from."
+        m 7eua "That isn't to say that people who suffer from Bipolar 1 can't live normal lives, often in between episodes they do just fine."
+        m 1eub "And like many other mental illnesses, there are support systems set in place to help those in need, specifically medications and therapy."
+        m 3eud "Remember that the best way to help is to make accomodations to them and do certain things differently."
+        m 4eua "Which brings us to Bipolar 2, [player]."
+        m 7eud "Bipolar 2 shares many similarities with Bipolar one in regards to the cycling of moods between {i}ups{/i} and {i}lows{/i}."
+        m 3esd "However, a key difference between the two is in Bipolar 2, the {i}ups{/i} never fully reach mania, instead the {i}ups{/i} become hypomanic episodes--hypomania."
+        m 1esc "Just like the Cyclothymic disorder, the {i}ups{/i} and {i}downs{/i} aren't as severe as either form of Bipolar, but is still noticeable."
+        m 3ekc "Though both forms of Bipolar still often coincide with depression."
+        m 1euc "And as you might already know, people suffering from either type can function 'normally' in between episodes."
+        m 7esd "Also [player], those experiencing hypomanic episodes may be able to blend in or seem like their enjoying themselves."
+        m 4eud "Hypomanic episodes often include increased energy, exaggerated self confidence, and even having the person fly from topic to the next in coversation."
+        m 7eusdld "Remember [player]. just because someone has a smile on their face, it does not mean they are doing well. " 
+        extend 3eua "Make sure to spread kindness to everyone, [player]!"
+        if mas_isMoniNormal(higher=True):
+            m 5eua "Though with how you treat me, I know you are always doing your best to be spread kindness."
+        else:
+            m 7hub "Though, I know that shouldn't be an issue."
+            $_history_list.pop()
+            m 1rusdlc "I least, I think so{fast}{nw}"
+            return
+
+     "No":
+          m 1rkb "That's alright [player]"
+          m 2eka "We can always talk about it later!"
+          $_history_list.pop()
+return
+
+init 5 python:
+    addEvent(Event(persistent.event_database,eventlabel="mentalhealth_Anxiety",category=['media', 'mental illnesses' ],prompt="Anxiety Types",random=True))
+
+label mentalhealth_Anxiety:
+    m 1eua "I've been thinking, [player]."
+    m 3eua "I probably have already mentioned anxiety before... "
+    extend 7euc "But I haven't fully told you about it have I?"
+    m 1euc "Anxiety is something that everyone has, but there are also more severe forms of it..."
+    m 1rusdlc "Usually to the point where it starts to affect their daily lives."
+    m 3eua "There are two basic types of anxiety, [player]."
+    m 7eud "Social Anxiety and of course the Generalized Anxiety Disorders... "
+    extend 1eub "Of course there are other types of Anxiety too, I might have already mentioned a few to you aswell, [player]." 
+    #Add a fun fact that says that PTSD is actually under the "Anxiety Disorder" catagory
+    m 3esa "With social anxiety, it should be pretty simply to understand really."
+    m 7esc "It's like being introverted, except the thought of everyone being against them is constantly railed into their heads..."
+    m 1rssdlc "This can lead to some serious stress, and {i}even more{/i} anxiety with groups of people they don't know..."
+    m 1eua "I hope you don't suffer from anything like this, [player]."
+    m 3euc "As for the Generalized Anxiety Disorder..."
+    m 7eub "This is another simple one again, [player]."
+    m 7euc "Generalized anxiety is more like normal anxiety but amplified even further!"
+    m 3ekd "Without proper treatment, like every disorder, this can be a really bad downward spiral..."
+    m 3eua "Well, it's not all bad though, [player]."
+    m 7eub "There have been studies that show people with anxiety are more empathic than most people. {w=0.2}{nw}"
+    extend 3hub "Which makes them great friends to be around!"
+    m 1eua "Anyways, [player]."
+    extend 3hub "Thank you for listening!"
+return

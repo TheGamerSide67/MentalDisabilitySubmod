@@ -2,12 +2,12 @@ init 5 python:
     addEvent(
         Event(
             persistent._mas_fun_facts_database,
-            eventlabel="mental_illnesses",
+            eventlabel="funfactmental_mental_illnesses",
         ),
         code="FFF"
     )
 
-label mental_illnesses:
+label funfactmental_mental_illnesses:
     m 3euc "Did you know that there are actually over 300 mental disabilities?"
     m 3eud "This is an insane amount isn't it [player]?"
     m 2euc "Though these are only the documented disabilities."
@@ -35,3 +35,21 @@ label mental_misdiagnoseshistory:
     extend 3eub "It's really interesting too!"
     call mas_fun_facts_end
 return
+
+
+init 5 python:
+    addEvent(
+        Event(
+            persistent._mas_fun_facts_database,
+            eventlabel="mental_PTSD_Anxietyfunfact",
+        ),
+        code="FFF"
+    )
+
+label mental_PTSD_Anxietyfunfact:
+    m 3eua "Did you know that PTSD is considered an anxiety disorder?"
+    m 1ruc "It seems pretty self explanitory when you think about it, so maybe you did."
+    m 7euc "Anyways, the reason why PTSD is considered an anxiety disorder is because of the constant fear that whatever happened, can happen again."
+    m 1eud "Compared to an anxiety disorder that has the constant fear of the {i}possibility{/i} of something ever happening."
+    m 1eua "There is always more to disorders than what you think, and they are all connected in a way."
+    call mas_fun_facts_end
