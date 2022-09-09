@@ -4,7 +4,7 @@ init -990 python:
         author="TheGamerSide67 HistoryVariety and Leafeon_Mk",
         name="Mental Disabilities Submod",
         description="A large submod dedicated to the talk of philosophy and mental disabilites and more!",
-        version="1.0.1",
+        version="1.1.0",
     )
 
 # Register the updater

@@ -1,5 +1,6 @@
 #random quip for when the player comes back and it calmed down, if they decide to
 #not vent/rant to Monika
+#Sorry PencilMario, until I can get it to a way I want it to be, the rework will have to wait.
 init python:
     RandomCalmDownWelcome = ["let's spend more time together!", "let's make the rest of your day better, together.", "what do you want to do now?"]
     RandomCalmDownWelcomeQuip = random.choice(RandomCalmDownWelcome)
