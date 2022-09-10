@@ -1,14 +1,6 @@
 # MentalDisabilitySubmod
 A submod for Monika After Story that talks about mental disabilities and philosophy!
 
-Current Version: 1.1.0!
-
--Updated dialog and fixed grammar
--Removed and added some dialog
--Changed a few variables around
--Rewrote some of the mental health checkup code
--Minor improvements
-
 Credits:
 HistoryVariety(Inital Dialog), TheGamerSide67(Main developer and dialog writer), LiveDaniReaction(dialog ideas, and tweaks), Leafeon_Mk (Dialog fixes, and co-developer)
 
