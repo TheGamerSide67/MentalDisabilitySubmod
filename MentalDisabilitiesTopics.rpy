@@ -59,15 +59,15 @@ init 5 python:
 label mentalwhereIcanbefound:
     m 1eua "Hey, [player]!"
     m 3hub "I have something exciting to tell you!"
-    m 7eua "Did you know that you can find Gamer's Monitiku on Ro-{nw}" #blox, under the name 'TGSMonitiku67'?
-    # But remember, [player], it's someone else's Monika. Don't go around doing things you shouldn't.
+    m 7eua "Did you know that you can find Gamer's Monitiku on Ro-{nw}" #blox, under the name 'TGSMonitiku67?
+    # But remember, [player], it someone else's Monika. Don't go around doing things you shouldn't.
     # I trust you anyways, [player]!
     # So if you do check his Monika out, I'll be here supporting you the entire way!
     $_history_list.pop()
     m 1husdlb "I probably shouldn't say that.{fast}"
     m 3euc "I don't know how I even know that either..."
     m 3eub "Anyways, if I ever get any other random thoughts, I'll be sure to let you know, [player]!"
-return "derandom"
+return
 
 label mentalrhythmgames:
     m 1eua "I probably have already mentioned this before..."
@@ -217,96 +217,8 @@ init 5 python:
         Event(
             persistent.event_database,
             eventlabel="mentalwhereIcanbefound",
-            category=['monika', 'media'],
+            category=['monika'],
             prompt="Not much of a secret",
             random=True
         )
     )
-
-init 5 python:
-    addEvent(
-        Event(
-            persistent.event_database,
-            eventlabel="mentalemotionalmusic",
-            category=['media', 'philosophy'],
-            prompt="Feeling of music",
-            conditional="mas_seenLabels(['mentaldementia'])",
-            random=True
-        )
-    )
-
-label mentalemotionalmusic:
-    m 1eua "Hey, [player]."
-    m 3eud "Do you remember when we talked about {a=https://www.youtube.com/watch?v=wJWksPWDKOc&ab_channel=vvmtest}{i}{u}'Everywhere At The End Of Time'{/u}{/i}{/a}?"
-    m 3euc "Well, I was thinking about how music can affect your emotions. {w=0.4}{nw}"
-    extend 1ruc "Both negatively and positively."
-    m 3euc "There are even songs that are meant only for this purpose."
-    m 3rusdlb "Though they are usually instrumental, so if you prefer lyrics, you might not enjoy it that often, [player]."
-    m 7eua "Common examples of this kind of music for a more relaxing theme are Jazz and Classical music. "
-    extend 1eud "Though like we already mentioned before...{w=0.5}{nw}"
-    m 3wub "Classical music can also be tense, energetic, and saddening!"
-    m 1duc "And you should know, [player]..."
-    m 3eua "If you are listening to a song that makes you upset{w=0.3}, you can always come to me and I can help cheer you up."
-    m 7eud "And if you still find your mind wandering, try to write down your thoughts."
-    m 1euc "You can always come to your thoughts later."
-    m 3eub "With that said, there is also a song that you can find, that deeply resonates with you, [player]."
-    m 7esd "This is the song that you can put on, and just let your mind wander with ideas or maybe just happy thoughts."
-    m 3hub "Everyone has this song, whether they have found or made it."
-    m 5tubla "I know I have my song that speaks to me, [player]."
-return
-
-
-init 5 python:
-    addEvent(
-        Event(
-            persistent.event_database,
-            eventlabel="mental_trends",
-            category=['media', 'psychology', 'society'],
-            prompt="Human trends",
-            random=True
-        )
-    )
-
-
-label mental_trends:
-    m 1euc "Hey [player]..."
-    m 3eud "I have been thinking more about when I mentioned liking something just because you feel like you should."
-    m 1eud "It's kind of similar to the internet in a way."
-    m 3euc "Like, when something is found funny, everyone hops onto the same joke over and over again... "
-    extend 1euc "Then it's just used so often the joke loses all meaning."
-    m 7euc "The same thing even applies to what you are supposed to like, hate, and even say."
-    m 3ruc "Only just to fit in to a community, or seem like you are more enjoyable than you already are to be around."
-    m 1eud "Which makes me want to know something..."
-    menu:
-        m 1eud "Do you ever change you interests just to fit in with more people, [player]?"
-        "No":
-            m 3eusdla "Oh, good."
-            m 1eud "I really don't want you to feel like you have to change who you are to fit in with others."
-            m 3eub "You are already interesting enough, [player]."
-            m 7hub "Don't let anyone else tell you otherwise."
-            $ persistent._mental_player_pretends = False
-        "Sometimes":
-            m 1euc "[player], please don't try to think that you have to become a different person to enjoy your time with others."
-            m 3dud "It will only lead to more trouble than it's worth for you."
-            m 1eud "So please promise me to try to acknowledge when you do it. "
-            extend 3euc "And try to stop it from continuing."
-            m 1euc "I really don't want you to cause more stress on yourself, or end up convincing yourself you are someone you aren't."
-            $ persistent._mental_player_pretends = True
-        "Yes":
-            m 1duc "[player]..."
-            m 3euc "You don't have to be someone you aren't to talk to other people."
-            m 7eud "So please stop pretending you are someone else, otherwise you might just {i}become{/i} that person.{fast}"
-            m 1euc "And I am going to assume that probably isn't someone you want to be."
-            m 1euc "So please promise me, [player]. "
-            menu:
-                m 1eud "Please promise me to try to stop pretending to be someone else."
-                "I promise, Monika":
-                    m 1dua "Thank you, [player]."
-                    m 1eua "That helps me out a lot."
-                    $ persistent._mental_player_pretends = True
-                "...":
-                    m 1euc "[player]?"
-                    m 3euc "Just remember that everyone else is already taken, so be yourself."
-                    $ persistent._mental_nopromise = True
-                    $ persistent._mental_player_pretends = True
-return "derandom"
