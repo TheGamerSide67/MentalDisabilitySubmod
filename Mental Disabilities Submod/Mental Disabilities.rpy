@@ -227,40 +227,40 @@ label monika_Bipolar:
     extend 3eub "so would you like to talk about it right now [player]?"
     $_history_list.pop()
     menu:
-     "Yes":
-        m 1eub "I am really excited for this one!"
-        m 3eua "Bipolar 1 is actually the most common form of bipolar [player]!"
-        extend 3eud "However it's also one of the more severe types out there."
-        m 4esc "Well, as you already know [player], bipolar attacks also known as manic episodes cause the effected person to be sent into either 'highs' or 'lows'."
-        m 7esb " Which can either give them extreme amounts of energy or will to do something unusually, {w=0.6}{nw}"
-        extend 3rusdlc "or it can also send them into a state of mild to even {i}severe{/i} depression episodes."
-        m 1euc "Unfourtanely, this usually leads to a cycle between the two."
-        m 3eud "Have you ever heard of the term {i}manic depression{/i}? Well that's where it comes from."
-        m 7eua "That isn't to say that people who suffer from Bipolar 1 can't live normal lives, often in between episodes they do just fine."
-        m 1eub "And like many other mental illnesses, there are support systems set in place to help those in need, specifically medications and therapy."
-        m 3eud "Remember that the best way to help is to make accomodations to them and do certain things differently."
-        m 4eua "Which brings us to Bipolar 2, [player]."
-        m 7eud "Bipolar 2 shares many similarities with Bipolar one in regards to the cycling of moods between {i}ups{/i} and {i}lows{/i}."
-        m 3esd "However, a key difference between the two is in Bipolar 2, the {i}ups{/i} never fully reach mania, instead the {i}ups{/i} become hypomanic episodes--hypomania."
-        m 1esc "Just like the Cyclothymic disorder, the {i}ups{/i} and {i}downs{/i} aren't as severe as either form of Bipolar, but is still noticeable."
-        m 3ekc "Though both forms of Bipolar still often coincide with depression."
-        m 1euc "And as you might already know, people suffering from either type can function 'normally' in between episodes."
-        m 7esd "Also [player], those experiencing hypomanic episodes may be able to blend in or seem like their enjoying themselves."
-        m 4eud "Hypomanic episodes often include increased energy, exaggerated self confidence, and even having the person fly from topic to the next in coversation."
-        m 7eusdld "Remember [player]. just because someone has a smile on their face, it does not mean they are doing well. " 
-        extend 3eua "Make sure to spread kindness to everyone, [player]!"
-        if mas_isMoniNormal(higher=True):
-            m 5eua "Though with how you treat me, I know you are always doing your best to be spread kindness."
-        else:
-            m 7hub "Though, I know that shouldn't be an issue."
-            $_history_list.pop()
-            m 1rusdlc "I least, I think so{fast}{nw}"
-            return
+        "Yes":
+            m 1eub "I am really excited for this one!"
+            m 3eua "Bipolar 1 is actually the most common form of bipolar [player]!"
+            extend 3eud "However it's also one of the more severe types out there."
+            m 4esc "Well, as you already know [player], bipolar attacks also known as manic episodes cause the effected person to be sent into either 'highs' or 'lows'."
+            m 7esb " Which can either give them extreme amounts of energy or will to do something unusually, {w=0.6}{nw}"
+            extend 3rusdlc "or it can also send them into a state of mild to even {i}severe{/i} depression episodes."
+            m 1euc "Unfourtanely, this usually leads to a cycle between the two."
+            m 3eud "Have you ever heard of the term {i}manic depression{/i}? Well that's where it comes from."
+            m 7eua "That isn't to say that people who suffer from Bipolar 1 can't live normal lives, often in between episodes they do just fine."
+            m 1eub "And like many other mental illnesses, there are support systems set in place to help those in need, specifically medications and therapy."
+            m 3eud "Remember that the best way to help is to make accomodations to them and do certain things differently."
+            m 4eua "Which brings us to Bipolar 2, [player]."
+            m 7eud "Bipolar 2 shares many similarities with Bipolar one in regards to the cycling of moods between {i}ups{/i} and {i}lows{/i}."
+            m 3esd "However, a key difference between the two is in Bipolar 2, the {i}ups{/i} never fully reach mania, instead the {i}ups{/i} become hypomanic episodes--hypomania."
+            m 1esc "Just like the Cyclothymic disorder, the {i}ups{/i} and {i}downs{/i} aren't as severe as either form of Bipolar, but is still noticeable."
+            m 3ekc "Though both forms of Bipolar still often coincide with depression."
+            m 1euc "And as you might already know, people suffering from either type can function 'normally' in between episodes."
+            m 7esd "Also [player], those experiencing hypomanic episodes may be able to blend in or seem like their enjoying themselves."
+            m 4eud "Hypomanic episodes often include increased energy, exaggerated self confidence, and even having the person fly from topic to the next in coversation."
+            m 7eusdld "Remember [player]. just because someone has a smile on their face, it does not mean they are doing well. " 
+            extend 3eua "Make sure to spread kindness to everyone, [player]!"
+            if mas_isMoniNormal(higher=True):
+                m 5eua "Though with how you treat me, I know you are always doing your best to be spread kindness."
+            else:
+                m 7hub "Though, I know that shouldn't be an issue."
+                $_history_list.pop()
+                m 1rusdlc "I least, I think so{fast}{nw}"
+                return
 
-     "No":
-          m 1rkb "That's alright [player]"
-          m 2eka "We can always talk about it later!"
-          $_history_list.pop()
+        "No":
+            m 1rkb "That's alright, [player]"
+            m 2eka "We can always talk about it later!"
+            $_history_list.pop()
 return
 
 init 5 python:
