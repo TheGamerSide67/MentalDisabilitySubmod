@@ -14,4 +14,5 @@ init -989 python:
             submod="Mental Disabilities Submod",
             user_name="TheGamerSide67",
             repository_name="MentalDisabilitySubmod"
+            extraction_depth=2
         )
