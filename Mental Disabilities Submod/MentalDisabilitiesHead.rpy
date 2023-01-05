@@ -13,6 +13,6 @@ init -989 python:
         store.sup_utils.SubmodUpdater(
             submod="Mental Disabilities Submod",
             user_name="TheGamerSide67",
-            repository_name="MentalDisabilitySubmod"
+            repository_name="MentalDisabilitySubmod",
             extraction_depth=2
         )
