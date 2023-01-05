@@ -243,7 +243,7 @@ label mentalemotionalmusic:
     m 3euc "There are even songs that are meant only for this purpose."
     m 3rusdlb "Though they are usually instrumental, so if you prefer lyrics, you might not enjoy it that often, [player]."
     m 7eua "Common examples of this kind of music for a more relaxing theme are Jazz and Classical music. "
-    extend 1eud "Though like we already mentioned before...{w=0.5}{nw}"
+    extend 1eud "Though like we already mentioned before..."
     m 3wub "Classical music can also be tense, energetic, and saddening!"
     m 1duc "And you should know, [player]..."
     m 3eua "If you are listening to a song that makes you upset{w=0.3}, you can always come to me and I can help cheer you up."
@@ -277,8 +277,8 @@ label mental_trends:
     m 7euc "The same thing even applies to what you are supposed to like, hate, and even say."
     m 3ruc "Only just to fit in to a community, or seem like you are more enjoyable than you already are to be around."
     m 1eud "Which makes me want to know something..."
+    m "Do you ever change your interests just to fit in with more people, [player]?"
     menu:
-        m 1eud "Do you ever change you interests just to fit in with more people, [player]?"
         "No":
             m 3eusdla "Oh, good."
             m 1eud "I really don't want you to feel like you have to change who you are to fit in with others."
@@ -297,9 +297,9 @@ label mental_trends:
             m 3euc "You don't have to be someone you aren't to talk to other people."
             m 7eud "So please stop pretending you are someone else, otherwise you might just {i}become{/i} that person.{fast}"
             m 1euc "And I am going to assume that probably isn't someone you want to be."
-            m 1euc "So please promise me, [player]. "
+            m 1euc "So please promise me, [player]..."
+            m 1eud "Please promise me to try to stop pretending to be someone else."
             menu:
-                m 1eud "Please promise me to try to stop pretending to be someone else."
                 "I promise, Monika":
                     m 1dua "Thank you, [player]."
                     m 1eua "That helps me out a lot."
