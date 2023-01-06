@@ -33,6 +33,7 @@ label mentalcheckup_greeting:
                 m 3euc "If there is anything I can do to help you feel any better mentally, just let me know."
                 m 3eua "After all, what kind of girlfriend would I be if I didn't want to help you, [player]!"
                 $ persistent._mentaldaydata = "Nuetral"
+                return
     if persistent._mentaldaydata == "Nuetral":
         m 1hua "Oh hello, [player]!"
         m 3eua "I know I already asked you how you were feeling mentally before... {w=0.2}{nw}"
@@ -43,6 +44,7 @@ label mentalcheckup_greeting:
             "No I am still feeling alright.":
                 m 1eua "Alright [player], I am glad you are still fine today."
                 m 3eua "Let's continue to spend more time together!"
+                return
             "My mental state actually got better recently!":
                 m 3hsa "That's exciting to hear, [player]!"
                 if mas_isMoniHappy(higher=True):
@@ -58,6 +60,7 @@ label mentalcheckup_greeting:
                     m 3husdlb "Sorry, I am getting off track [player]!"
                     m 3eua "Let's spend more time together, okay?"
                     $ persistent._mentaldaydata = "Good"
+                    return
             "My mental state got worse Monika...":
                 m 1ekc "That's not good, [player]!"
                 m 3ekc "Did something bad happen while you were gone?"
@@ -74,6 +77,7 @@ label mentalcheckup_greeting:
                     extend 3eud "Both mentally and emotionally."
                     m 1eub "Remember, I am always here for you, [player]!"
                     $ persistent._mentaldaydata = "Bad"
+                    return
     if persistent._mentaldaydata == "Bad":
         m 3eub "Hey, [player]!"
         m 1euc "I know this is a awkward to bring up already..."
@@ -85,6 +89,7 @@ label mentalcheckup_greeting:
                 m 1dkc "{W=1}Oh... {nw}"
                 m "{w=1}Well... {nw}"
                 m 1euc "Well, just know that I want to best for you, [player]."
+                return
             "My mental state actually got better Monika!":
                 m 3eua "That's good to hear, [player]!"
                 if mas_isMoniHappy(higher=True) and renpy.random.randint(1,4) == 1:
@@ -93,13 +98,16 @@ label mentalcheckup_greeting:
                     m 1eua "Well, I am just glad that you are better mentally, [mas_get_player_nickname()]."
                     m 3eua "Let's continue to spend more time together!"
                     $ persistent._mentaldaydata = "Nuetral"
+                    return
                 else:
                     m 1eua "I am just glad that you are better mentally, [mas_get_player_nickname()]."
                     m 3eua "Let's continue to spend more time together!"
                     $ persistent._mentaldaydata = "Nuetral"
+                    return
             "...":
                 m 1dkc "..."
                 m 3eua "Well, let's just carry on with our day then, [player]..."
+                return
 
     else:
         m 1hua "Oh hello, [player]!"
@@ -345,5 +353,4 @@ label mentalroom_greeting_ear_disability:
     m "Oh my gosh!"
     m "Why would anyone say that about Autism?"
     jump monikaroom_greeting_choice
-
 

@@ -9,7 +9,7 @@ init 5 python:
 
 label funfactmental_mental_illnesses:
     m 3euc "Did you know that there are actually over 300 mental disabilities?"
-    m 3eud "This is an insane amount isn't it [player]?"
+    m 3eud "This is an insane amount isn't it, [player]?"
     m 2euc "Though these are only the documented disabilities."
     m "I am sure there are much more out there that aren't even documented yet!"
     m "That just means there is always more to learn!"
