@@ -204,7 +204,7 @@ label mentalmeditation:
         jump mentalmeditation_jump
 
 label mentalmeditation_jump:
-    m 3hub "Although, if you are more of an athletic kind of person, I would also recommend you yoga."
+    m 3hub "Although, if you are more of an athletic kind of person, I would also recommend yoga."
     m 4eub "It's different from most sports where you need to run around alot and play with a team."
     m 7wub "Yoga can help with flexability and even stamina!"
     m 1eka "Or if you want, the next time your feel frustrated or just want to meditate..."
