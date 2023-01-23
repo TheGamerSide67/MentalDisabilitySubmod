@@ -11,8 +11,8 @@ label funfactmental_mental_illnesses:
     m 3euc "Did you know that there are actually over 300 mental disabilities?"
     m 3eud "This is an insane amount isn't it, [player]?"
     m 2euc "Though these are only the documented disabilities."
-    m "I am sure there are much more out there that aren't even documented yet!"
-    m "That just means there is always more to learn!"
+    m 3eua "I am sure there are much more out there that aren't even documented yet!"
+    m 7eub "That just means there is always more to learn!"
     #Call the end
     call mas_fun_facts_end
 return
@@ -52,4 +52,23 @@ label mental_PTSD_Anxietyfunfact:
     m 7euc "Anyways, the reason why PTSD is considered an anxiety disorder is because of the constant fear that whatever happened, can happen again."
     m 1eud "Compared to an anxiety disorder that has the constant fear of the {i}possibility{/i} of something ever happening."
     m 1eua "There is always more to disorders than what you think, and they are all connected in a way."
+    call mas_fun_facts_end
+
+init 5 python:
+    addEvent(
+        Event(
+            persistent._mas_fun_facts_database,
+            eventlabel="mental_conformist_trendsFF",
+        ),
+        code="FFF"
+    )
+
+label mental_conformist_trendsFF:
+    m 3eua "Did you know that someone who tries to always look good in everyone's eyes is called a [i]conformist[i/]?"
+    m 7eud "A conformist, at it's basic term, means that a person cares most about their public image, rather than what they believe in."
+    m 1rusdlb "It's kind of like an idol, or even a famous pop-star."
+    m 1euc "Though there are more severe forms of conformism, it's usually something that isn't too bad."
+    m 3eud "Like, for example, someone who tends to make it their life goal to be liked by everyone."
+    m 1duc "It's a pretty negative spiral to get into."
+    m 1eua "Anyways, I think I am getting off track here."
     call mas_fun_facts_end
