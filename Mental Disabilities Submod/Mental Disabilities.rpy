@@ -252,9 +252,9 @@ label monika_Bipolar:
             if mas_isMoniNormal(higher=True):
                 m 5eua "Though with how you treat me, I know you are always doing your best to be spread kindness."
             else:
-                m 7hub "Though, I know that shouldn't be an issue."
+                m 7hub "Though, that may be a problem for you.{fast}{nw}"
                 $_history_list.pop()
-                m 1rusdlc "I least, I think so{fast}{nw}"
+                m 1rusdlc "You should be fine with that. Or at least I'd hope so.{nw}"
                 return
 
         "No":
