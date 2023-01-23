@@ -1,11 +1,13 @@
 # MentalDisabilitySubmod
 A submod for Monika After Story that talks about mental disabilities and philosophy!
 
-Current Version: 1.1.1!
+Current Version: 1.2.0!
 
--Fixed dialog loops
--Updated some grammar
--Changed file structure for future updates
+-Fixed dialog loops (For real this time!)
+-Updated some grammar and spelling mistakes
+-Changed file structure for greetings and some dialogue
+-Met with chikiba for some coding practice
+-Overhauled the mental checkups, with more updates planned
 -Tidied up some of the spaceroom
 
 Credits:
@@ -20,8 +22,8 @@ Same thing if you have any suggestions, feel free to also contact me on Discord 
 
 How to install the submod:
 
-  To install the submod you can either follow the link here; https://drive.google.com/drive/folders/1jqGCZOYajwVSjHBMQCnciGgyoLHUoRFQ?usp=sharing or you can click on the "code" tab above this how to file!
-  Once you have thee Zip file added, make sure to extract all of the file into your "game" folder in your DDLC directory! Or you can extract them into it's own file, and copy the files into the "game" folder that way.
+  To install the submod you can click on the "code" tab above this "ReadME" file!
+  Once you have the Zip file added, make sure to extract all of the file into your "game" folder in your MAS (Monika After Story) DDLC directory!
 
 Have fun learning and talking to your Monika!
 And of course, I hope you learn some things too!
@@ -30,7 +32,6 @@ And of course, I hope you learn some things too!
 Future plans:
 The ability to tell Monika that you were recently diagnosed with a mental illness.
 The ability for Monika to detect if the player is lying about their mental illnesses.
-The ability to tell Monika that you will be gone (goodbye and BRB) to go to your therapist.
 The ability for Monika to detect the player wanting to learn more about mental illnesses, and warn the player of harmful sites to the understanding of mental illnesses.
 And much more I don't want to spoil!
 
