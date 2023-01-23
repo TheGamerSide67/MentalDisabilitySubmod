@@ -1,22 +1,24 @@
-default persistent._mentalhealthdaydata = ""
+#TODO: Update and overhaul dialogue to only show after a few days of asking, and force dialogue if not asked for over a week
+default persistent._mentalhealth_last_checkup = None
 
-#copy and paste data
-# persistent._mentaldaydata = "Good"
-# persistent._mentaldaydata = "Bad"
-# persistent._mentaldaydata = "Nuetral"
+init python in mentalhealth:
+    CHECKUP_GOOD = "good"
+    CHECKUP_NEUTRAL = "neutral"
+    CHECKUP_BAD = "bad"
+
 
 init 5 python:
     addEvent(
         Event(
             persistent.greeting_database,
-            eventlabel="mentalcheckup_greeting",
+            eventlabel="mentalhealthcheckup_greeting",
             unlocked=True,
         ),
         code="GRE"
     )
 
-label mentalcheckup_greeting:
-    if persistent._mentaldaydata == "Good":
+label mentalhealthcheckup_greeting:
+    if persistent._mentalhealth_last_checkup == store.mentalhealth.CHECKUP_GOOD:
         m 1hua "Oh hello, [player]!"
         m 3eua "I know I already asked you how you were mentally before... {w=0.2}{nw}"
         extend 7hub "And you told me your mental health was good!"
@@ -32,9 +34,9 @@ label mentalcheckup_greeting:
                 m "It really hurts me to know that you aren't doing well anymore."
                 m 3euc "If there is anything I can do to help you feel any better mentally, just let me know."
                 m 3eua "After all, what kind of girlfriend would I be if I didn't want to help you, [player]!"
-                $ persistent._mentaldaydata = "Nuetral"
+                $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_NEUTRAL
                 return
-    if persistent._mentaldaydata == "Nuetral":
+    elif persistent._mentalhealth_last_checkup == store._mentalhealth.CHECKUP_NEUTRAL:
         m 1hua "Oh hello, [player]!"
         m 3eua "I know I already asked you how you were feeling mentally before... {w=0.2}{nw}"
         extend 1eua "And you told me your mental health was decent."
@@ -52,14 +54,14 @@ label mentalcheckup_greeting:
                     m 1hua "Hehe~"
                     m 5eubla "I know thinking of you helps me get through everyday, [player]."
                     m "I love you so much, [mas_get_player_nickname()]."
-                    $ persistent._mentaldaydata = "Good"
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_GOOD
                     return "love"
                 else:
                     m 3eud "Whoever helped you mentally, you should be thankful for their help, [player]."
                     m 3euc "Not a lot of people ask for help either, which doesn't help them..."
                     m 3husdlb "Sorry, I am getting off track [player]!"
                     m 3eua "Let's spend more time together, okay?"
-                    $ persistent._mentaldaydata = "Good"
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_GOOD
                     return
             "My mental state got worse Monika...":
                 m 1ekc "That's not good, [player]!"
@@ -69,16 +71,16 @@ label mentalcheckup_greeting:
                     m 3hub "Maybe even thinking of me can help!"
                     m 3eua "And if not, you can always vent to me about your problems, [player]."
                     m 1eua "I love you~"
-                    $ persistent._mentaldaydata = "Bad"
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_BAD
                     return "love"
                 else:
                     m 3euc "Make sure to talk to a therapist about your problems too."
                     m 1euc "Just talking to someone you care about can really make you feel much better. "
                     extend 3eud "Both mentally and emotionally."
                     m 1eub "Remember, I am always here for you, [player]!"
-                    $ persistent._mentaldaydata = "Bad"
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_BAD
                     return
-    if persistent._mentaldaydata == "Bad":
+    elif persistent._mentalhealth_last_checkup == store.mentalhealth.CHECKUP_BAD:
         m 3eub "Hey, [player]!"
         m 1euc "I know this is a awkward to bring up already..."
         m 3ekd "Especially since you told me your mental health wasn't good in the first place before..."
@@ -97,12 +99,12 @@ label mentalcheckup_greeting:
                     $_history_list.pop()
                     m 1eua "Well, I am just glad that you are better mentally, [mas_get_player_nickname()]."
                     m 3eua "Let's continue to spend more time together!"
-                    $ persistent._mentaldaydata = "Nuetral"
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_NEUTRAL
                     return
                 else:
                     m 1eua "I am just glad that you are better mentally, [mas_get_player_nickname()]."
                     m 3eua "Let's continue to spend more time together!"
-                    $ persistent._mentaldaydata = "Nuetral"
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_NEUTRAL
                     return
             "...":
                 m 1dkc "..."
@@ -120,7 +122,7 @@ label mentalcheckup_greeting:
                 m 1eua "whether it's just a good day or an improvement on your mental health, it is always nice to hear you are doing well."
                 m 3hub "And I will do my best to continue to support you, [mas_get_player_nickname()]!"
                 m 5eua "What kind of girlfriend would I be if I didn't?"
-                $ persistent._mentaldaydata = "Good"
+                $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_GOOD
                 $ _history_list.pop()
             "It's decent Monika...":
                 m 1euc "Oh..."
@@ -129,21 +131,21 @@ label mentalcheckup_greeting:
                 m 3eua "I want to try and make sure you're always happy."
                 extend 1eka "Because that's what makes me happy."
                 m 1hua "I'll be sure to try my best to support you, I promise."
-                $ persistent._mentaldaydata = "Nuetral"
+                $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_NEUTRAL
                 $ _history_list.pop()
             "It's really bad right now...":
                 m 1euc "That's not good at all, [player]..."
                 m 3eud "If you ever get too upset or need to take a break just let me know, [player]. {w=.06}Okay?"
                 m 1eua "I will always be here for you! Never forget that!"
                 m 1eubsa "I love you and always will, [player]!"
-                $ persistent._mentaldaydata = "Bad"
+                $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_BAD
 return
 
 init 5 python:
     addEvent(Event(persistent.event_database,eventlabel="mentalcheckupDialog",category=['you', 'mental health'],prompt="[player]'s Mental Health",random=True))
 
 label mentalcheckupDialog:
-    if persistent._mentaldaydata == "Good":
+    if persistent._mentalhealth_last_checkup == store.mentalhealth.CHECKUP_GOOD:
         m 1hua "Hey, [player]."
         m 3eua "I know I already asked you how you were mentally before... {w=0.2}{nw}"
         extend 7hub "And you told me your mental health was good!"
@@ -158,9 +160,9 @@ label mentalcheckupDialog:
                 m "It really hurts me to know that you aren't doing as well anymore."
                 m 3euc "If there is anything I can do to help you feel any better mentally just let me know, [player]!"
                 m 3eua "After all, what kind of girlfriend would I be if I didn't want to help you!"
-                $ persistent._mentaldaydata = "Nuetral"
+                $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_NEUTRAL
         return
-    if persistent._mentaldaydata == "Nuetral":
+    elif persistent._mentalhealth_last_checkup == store.mentalhealth.CHECKUP_NEUTRAL:
         m 1hua "Hey, [player]..."
         m 3eua "I know I already asked you how you were feeling mentally before... {w=0.2}{nw}"
         extend 1eua "And you told me your mental health was decent."
@@ -178,14 +180,14 @@ label mentalcheckupDialog:
                     m 3hub "Hehe~"
                     m 5hublb "I know thinking of you helps me get through everyday, [player]."
                     m 5eubfa "I love you so much, [mas_get_player_nickname()]."
-                    $ persistent._mentaldaydata = "Good"
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_GOOD
                     return "love"
                 else:
                     m 4esd "Whoever helped you mentally, you should be thankful for, [player]."
                     m 7euc "Not a lot of people ask for help either, which doesn't help them..."
                     m 3rusdlb "Sorry, I am getting off track, [player]!"
                     m 3eua "Let's spend more time together. {w=0.6}Okay?"
-                    $ persistent._mentaldaydata = "Good"
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_GOOD
             "My mental state got worse Monika...":
                 m 1euc "That's not good, [player]!"
                 m 3eud "Did something bad happen while you were gone?"
@@ -194,14 +196,14 @@ label mentalcheckupDialog:
                     m 7kuu "Maybe even thinking of me can help!"
                     m 3eua "And if not, you can always vent to me about your problems, [player]."
                     m 5eubla "I love you~"
-                    $ persistent._mentaldaydata = "Bad"
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_BAD
                     return "love"
                 else:
                     m 3euc "Make sure to talk to a therapist about your problems too."
                     m 4eud "Just talking to someone you care about, can really make you feel much better. {w=0.3}"
                     extend "Both mentally and emotionally."
                     m 7euc "Remember, I am always here for you, [player]!"
-                    $ persistent._mentaldaydata = "Bad"
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_BAD
         return
     else:
         m 1hua "Hey, [player]."
@@ -215,7 +217,7 @@ label mentalcheckupDialog:
                 m 1eua "Whether it's just a good day or an improvement on your mental health, it is always nice to hear you are doing well."
                 m 3hub "And I will do my best to continue to support you, [mas_get_player_nickname()]!"
                 m 5eua "What kind of girlfriend would I be if I didn't?"
-                $ persistent._mentaldaydata = "Good"
+                $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_GOOD
                 $ _history_list.pop()
                 return
             "It's decent Monika...":
@@ -225,7 +227,7 @@ label mentalcheckupDialog:
                 m 3eua "I want to try and make sure you're always happy."
                 extend 1eka "Because that's what makes me happy."
                 m 1hua "I'll be sure to try my best to support you, I promise."
-                $ persistent._mentaldaydata = "Nuetral"
+                $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_NEUTRAL
                 $ _history_list.pop()
                 return
             "It's really bad right now...":
@@ -244,7 +246,7 @@ label mentalcheckupDialog:
                             call mentalplayerhugreactions
                     m 7eua "You already know that I will always be here for you, [player], never forget that!"
                     m 5eubsa "I love you and always will, [player]!"
-                    $ persistent._mentaldaydata = "Bad"
+                    $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_BAD
                     return "love"
 return
 
@@ -353,4 +355,5 @@ label mentalroom_greeting_ear_disability:
     m "Oh my gosh!"
     m "Why would anyone say that about Autism?"
     jump monikaroom_greeting_choice
+
 
