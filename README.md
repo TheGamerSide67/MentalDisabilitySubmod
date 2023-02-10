@@ -1,7 +1,7 @@
 # MentalDisabilitySubmod
 A submod for Monika After Story that talks about mental disabilities and philosophy!
 
-Current Version: 1.2.1!
+Current Version: 1.2.2!
 
 -Fixed dialog loops (For real this time!)
 -Updated some grammar and spelling mistakes
