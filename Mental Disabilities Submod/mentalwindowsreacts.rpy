@@ -2,7 +2,7 @@ init 5 python:
     addEvent(
         Event(
             persistent._mas_windowreacts_database,
-            eventlabel="mas_wrs_mentalhealthwrs_rhythmgames",
+            eventlabel="wrs_mentalhealthwrs_rhythmgames",
             category=[r"(?i)Taiko no Tatsujin, Osu!|DJMAX RESPECT|Friday Night Funkin'"],
             rules={
                 "notif-group": "Window Reactions",
@@ -15,7 +15,7 @@ init 5 python:
         code="WRS"
     )
 
-label mas_wrs_mentalhealthwrs_rhythmgames:
+label wrs_mentalhealthwrs_rhythmgames:
     python:
         title = mas_getActiveWindowHandle()
         titlereact = title.lower()
@@ -61,5 +61,5 @@ label mas_wrs_mentalhealthwrs_rhythmgames:
 
 
     if not wrs_success:
-        $ mas_unlockFailedWRS('mas_wrs_mentalhealthwrs_rhythmgames')
+        $ mas_unlockFailedWRS('wrs_mentalhealthwrs_rhythmgames')
     return
