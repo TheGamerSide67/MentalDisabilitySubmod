@@ -36,7 +36,7 @@ label mentalhealthcheckup_greeting:
                 m 3eua "After all, what kind of girlfriend would I be if I didn't want to help you, [player]!"
                 $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_NEUTRAL
                 return
-    elif persistent._mentalhealth_last_checkup == store._mentalhealth.CHECKUP_NEUTRAL:
+    elif persistent._mentalhealth_last_checkup == store.mentalhealth.CHECKUP_NEUTRAL:
         m 1hua "Oh hello, [player]!"
         m 3eua "I know I already asked you how you were feeling mentally before... {w=0.2}{nw}"
         extend 1eua "And you told me your mental health was decent."
