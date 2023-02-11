@@ -37,7 +37,7 @@ label wrs_mentalhealthwrs_rhythmgames:
             )        
             
             
-            else:
+        else:
             mentalrhythmgamesquips = [
             "Playing a rhythm game, [player]?",
             "This game looks really fun, [player]!",
