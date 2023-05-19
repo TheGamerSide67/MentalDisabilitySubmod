@@ -25,7 +25,7 @@ label mentalmaskingdisability:
         m 1eud "Just make sure not to push yourself onto them and give them time too! {w=0.3}{nw}"
         extend 3euc "You wouldn't want to overwhelm them, [player]."
         if mas_isMoniHappy(higher=True):
-            m 3eua "Though knowing you [player], I shouldn't have to worry about that."
+            m 3eua "Though knowing you [player], I shouldn't have to worry about that. "
             extend 5eubla "I already know that you are a good person, [player]."
         else:
             m 3euc "I hope you can be a good friend to them."
@@ -49,7 +49,7 @@ init 5 python:
         Event(
             persistent.event_database,
             eventlabel="mentalrhythmgames",
-            category=['media'],
+            category=['media', 'mental illnesses'],
             prompt="Rhythm Games for ADHD players",
             conditional="seen_event('mentalADHD')",
             random=True
@@ -115,7 +115,7 @@ label mental_fictional_characters_aging:
     m 3esc "With some characters they are the same '{i}age{/i}' as they always are, but their creators can '{i}update{/i}' their age."
     m 1esc "Think of it like this [player]. {w=0.2}{nw}"
     extend 3eud "Imagine if you could only age if you celebrated your birthday."
-    m 7euc "It might sound good at first, but as time progresses, you would realiize that isn't exactly the best thing."
+    m 7euc "It might sound great at first, but as time progresses, you would realize that this isn't exactly the best."
     m 3etc "There are so many things to factor in, such as if you were out somewhere, or if you were alone that day."
     m 1rtc "Not to mention, what would happen if you missed a birthday."
     m 1esd "Would you skip a year?{w=0.3} Would you only feel one year pass?{w=0.3} Or both?"
@@ -310,3 +310,40 @@ label mental_trends:
                     $ persistent._mental_nopromise = True
                     $ persistent._mental_player_pretends = True
 return "derandom"
+
+
+init 5 python:
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="mental_autism_media",
+            category=['media', 'mental illnesses'],
+            prompt="Autism in media",
+            conditional="mas_seenLabels(['mentalschizophrenia'])",
+            random=True
+        )
+    )
+
+
+label mental_autism_media:
+    m 1eua "Hey, [player]."
+    m "Do you remember when I mentioned how scitzophrenia was seen in media?"
+    m 1euc "Well, it reminded me of how other disabilities are also portrayed in media."
+    m 3euc "Take for example, autism."
+    m 7eud "The earliest example of autism in media is from the movie {a=https://www.youtube.com/watch?v=_8T7U-tTNqo&ab_channel=YouTubeMovies}{i}{u}'The Boy Who Could Fly'{/u}{/i}{/a} made in 1986."
+    m 3esc "In the film, the main character, Eric, is a teenager who finds it hard to communicate with others."
+    m 1esa "I won't go over the plot too much just in case you want to watch it, [mas_get_player_nickname()]."
+    m 3euc "Well, there is another film that showcases a person who is savant in their skills, but also lacks a lot of communications skills..."
+    m 3eud "This movie is '{i}Rain Man (1998){/i}'."
+    m 7esd "The main character is shown as lacking emotion and social skills, "
+    extend 7eub "but being extremly intelligent and having a near photographic memory!"
+    m 1euc "Both of these movies accidentally created new sterotypes for autism in media, and that they aren't socially good, but are savant in another area."
+    m 3eud "At the time, this was a pretty rare topic to talk about, so what was known, was often confusing or counterintuitive."
+    m 1ekc "Unfortunately, this trend still continues in a lot of popular films... {w=1.2}{nw}"
+    extend 3eub "But there are some good examples in media too!"
+    m 7eua "One example may be surprising to you, but it's from '{a=https://www.amazon.com/Sabans-Power-Rangers-Dacre-Montgomery/dp/B06XRDHM44}{u}{i}Power Rangers Movie{/i}{/u}{/a}."
+    m 3eub "It showcases some of the more subtle behaviors that can happen, and actually shows autism in a positive light compared to other films."
+    m 7eua "And while a movie can't show {i}exactly{/i} how autism effects someone, it does help people without knowledge get a basic understanding."
+    m 1eud "Of course, there are also harmful ways to showcase any disability, so if you want to research anything, just make sure to check your sources."
+    m 1eub "Anyways, thank you for listening, [player]."
+return
