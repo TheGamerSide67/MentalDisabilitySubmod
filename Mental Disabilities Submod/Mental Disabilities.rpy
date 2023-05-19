@@ -1,3 +1,10 @@
+#sets the default variables
+default persistent._mental_player_has_ADHD = False
+default persistent._mental_player_has_autism = False
+default persistent._player_has_disabilities = False
+
+
+
 init 5 python:
     addEvent(Event(persistent.event_database,eventlabel="mentalADHD",category=['mental illnesses', 'media'],prompt="ADHD",random=True))
 
@@ -19,6 +26,7 @@ label mentalADHD:
                     m 1ekd "It was disheartening for me to find, that it's often not taken as seriously as other disabilities in the same catagory..."
                     call mentalADHDEnd
                     $ persistent._mental_player_has_ADHD = True
+                    $ persistent._player_has_disabilities = True
                 "I know someone who has ADHD!":
                     m 3eua "I'm sure they're more than happy to have a friend or family member like you, [player]!"
                     m 1ekd "It was disheartening for me to find, that it's often not taken as seriously as other disabilities in the same catagory..."
@@ -35,6 +43,7 @@ label mentalADHD:
                     menu:
                         "Yes.":
                             $ persistent._mental_player_has_ADHD = True
+                            $ persistent._player_has_disabilities = True
                             m 4eub "It's good to try to learn more about yourself.{w=0.55}"
                             extend 7hub " It shows that you care about yourself!"
                             m 3eua "I am happy you told me that you have ADHD, [player]."
@@ -117,7 +126,7 @@ label mentalhealthAutism:
     m 3eub "Well, while there are serious issues with how autism is treated,{w=0.2} there are also ways to understand it better!"
     m 4eua "There are a lot of credible resources out there with information to help other's understand just a little bit more with how they feel."
     m 4rusdlc "But there are also false information out there that is actually {i}harmful{/i} to the understanding of Autism."
-    m 3eua "Just make sure to check your sources [mas_get_player_nickname()]!"
+    m 3eua "Just make sure to check your sources, [mas_get_player_nickname()]!"
 return
 
 
@@ -131,7 +140,7 @@ label mentalschizophrenia:
     m 1gfc "It's like they don't even bother to show care for the ones effected by it! {w=0.3}{nw}"
     extend 3eua "But I know you are not like that [mas_get_player_nickname()]."
     m 1lkc "Well, I'm sure you can understand how saddening Schinzophrenia may be [player]."
-    m 3ekc "Like can you imagine having delusions of sounds?"
+    m 3ekc "Like, can you imagine having delusions of sounds?"
     m 1rkc "It can drive them insane... {w=0.3}{nw}"
     extend 1rksdld "Especially if they are voices."
     m 3eud "Even if they don't have delusions all of the time, they have a more literal thought process."
@@ -153,7 +162,7 @@ label mentalschizophrenia:
     m 7hub "It just goes to show that something as simple as a comic strip can have a major impact on someone."
     m 5eua "I hope you have something in your life that motivates you like stories can, [mas_get_player_nickname()]."
     m 5hubsa "If not, I wouldn't mind being your motivation in life."
-    m 5eubfa "I love you [player]."
+    m 5eubfa "I love you, [player]."
 return "love"
 
 init 5 python:
@@ -167,7 +176,7 @@ label mentalPTSD:
     m 1euc "Almost all cases of PTSD stem from great amounts of stress or trauma!"
     m 2eud "To put it bluntly, any person who has encountered a traumatic event of any kind has a chance of developing PTSD."
     m 3euc "Do you know what PTSD stands for [player]?"
-    m 7rtd "Well the acronym PTSD stands for Post Traumatic Stress Disorder, and with the name the defintion is essentially given."
+    m 7rtd "Well the acronym PTSD stands for Post Traumatic Stress Disorder, and with the name, the defintion is essentially given."
     m 1eksdrc "PTSD is a mental disorder that occurs after a traumatic event. {w=0.3}{nw}"
     extend 3eksdru "Not a very descriptive defintion, is it [mas_get_player_nickname()]?"
     m 3ekc "Well PTSD is described to naturally occur after a traumatic event takes place."
@@ -215,9 +224,9 @@ label mentaldementia:
 return
 
 init 5 python:
-    addEvent(Event(persistent.event_database,eventlabel="monika_Bipolar",category=['media', 'mental illnesses'],prompt="Bipolar",random=True))
+    addEvent(Event(persistent.event_database,eventlabel="MentalBipolar",category=['media', 'mental illnesses'],prompt="Bipolar",random=True))
 
-label monika_Bipolar:
+label MentalBipolar:
     m 1eua "Hey [player], I have been doing more research on mental disabilities again."
     m 3eua "You might have heard of this one before [player]!"
     m 3euc "The mental disability I want to talk to you about today is Bipolar."
@@ -231,18 +240,18 @@ label monika_Bipolar:
             m 1eub "I am really excited for this one!"
             m 3eua "Bipolar 1 is actually the most common form of bipolar [player]!"
             extend 3eud "However it's also one of the more severe types out there."
-            m 4esc "Well, as you already know [player], bipolar attacks also known as manic episodes cause the effected person to be sent into either 'highs' or 'lows'."
-            m 7esb " Which can either give them extreme amounts of energy or will to do something unusually, {w=0.6}{nw}"
-            extend 3rusdlc "or it can also send them into a state of mild to even {i}severe{/i} depression episodes."
+            m 4esc "Well, as you already know [player], bipolar attacks, also known as manic episodes, cause the effected person to be sent into either 'highs' or 'lows'."
+            m 7esb "Which can either give them extreme amounts of energy or will to do something unusually, {w=0.6}{nw}"
+            extend 3rusdlc "or it can also send them into a state of mild, to even {i}severe{/i} depression episodes."
             m 1euc "Unfourtanely, this usually leads to a cycle between the two."
             m 3eud "Have you ever heard of the term {i}manic depression{/i}? Well that's where it comes from."
-            m 7eua "That isn't to say that people who suffer from Bipolar 1 can't live normal lives, often in between episodes they do just fine."
-            m 1eub "And like many other mental illnesses, there are support systems set in place to help those in need, specifically medications and therapy."
-            m 3eud "Remember that the best way to help is to make accomodations to them and do certain things differently."
+            m 7eua "That isn't to say that people who suffer from Bipolar 1 can't live normal lives, often in-between episodes they do just fine."
+            m 1eub "Like many other mental illnesses, there are support systems set in place to help those in need, specifically medication and therapy."
+            m 3eud "Remember, the best way to help is to make accomodations to them and do certain things differently."
             m 4eua "Which brings us to Bipolar 2, [player]."
-            m 7eud "Bipolar 2 shares many similarities with Bipolar one in regards to the cycling of moods between {i}ups{/i} and {i}lows{/i}."
-            m 3esd "However, a key difference between the two is in Bipolar 2, the {i}ups{/i} never fully reach mania, instead the {i}ups{/i} become hypomanic episodes--hypomania."
-            m 1esc "Just like the Cyclothymic disorder, the {i}ups{/i} and {i}downs{/i} aren't as severe as either form of Bipolar, but is still noticeable."
+            m 7eud "Bipolar 2 shares many similarities with Bipolar one, in regards to the cycling of moods between {i}highs{/i} and {i}lows{/i}."
+            m 3esd "However, a key difference between the two is in Bipolar 2, the {i}highs{/i} never fully reach mania, instead the {i}highs{/i} become hypomanic episodes--hypomania."
+            m 1esc "Just like the Cyclothymic disorder, the {i}highs{/i} and {i}lows{/i} aren't as severe as either form of Bipolar, but is still noticeable."
             m 3ekc "Though both forms of Bipolar still often coincide with depression."
             m 1euc "And as you might already know, people suffering from either type can function 'normally' in between episodes."
             m 7esd "Also [player], those experiencing hypomanic episodes may be able to blend in or seem like their enjoying themselves."
@@ -289,4 +298,44 @@ label mentalhealth_Anxiety:
     extend 3hub "Which makes them great friends to be around!"
     m 1eua "Anyways, [player]."
     extend 3hub "Thank you for listening!"
+return
+
+
+init 5 python:
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="mentalProsopagnosia",
+            category=['media', 'mental illnesses'],
+            prompt="Prosopagnosia",
+            conditional="mas_seenLabels(['mentalhealthAutism'])",
+            action=EV_ACT_RANDOM
+        )
+    )
+
+label mentalProsopagnosia:
+    m 1eua "Hey, [player]."
+    m 3eua "Have you ever heard of prosopagnosia?"
+    m 1euc "Well, in short, it's a mental disability that makes it hard to recognize faces."
+    m 7eud "Prosopagnosia has a few different words for it, like '{i}face blindness{/i}' and '{i}facial agnosia{/i}'. But you probably shouldn't use latter term..."
+    m 1euc "You can imagine how this can be pretty impactful on someone's day to day life, huh, [player]?"
+    m 3eud "Well, there are different severities of prosopagnosia. Like being only recognize familiar faces, but not strangers. {w=0.75}{nw}"
+    extend 3rusdld "Or seeing objects and faces as the same thing..."
+    m 7eud "Here, try this for me, [player]..."
+    $ startedimaginetime = datetime.datetime.now()
+    m 1euc "Close your eyes and try to imagine someone who doesn't exist."
+    $ imagined_facetime = (datetime.datetime.now() > (startedimaginetime + datetime.timedelta(seconds=30)))
+    if imagined_facetime:
+        m 3euu "When you tried to imagine a face, you found it difficult, right?"
+        m 1euc "Well, that's only a small glimpse into prosopagnosia, but it does help to give you an idea."
+    else:
+        m 3euc "You can find that it's more difficult to imagine something that doesn't exist. like a new color."
+        m 7eud "It's just to give you an idea, [player]."
+    m 1eud "Since they can't easily tell faces apart, they often end up using other visuals, like clothing or piercing to help combat this."
+    m 1euc "Sometimes they use voices too, but I think that is a given."
+    if imagined_facetime:
+        m 2ruu "So if you ever wanted to trick someone with prosopagnosia, all you need is their clothing."
+        m 1rub "Ahaha, I am only joking. I know you wouldn't do that."
+    m 1euc "Though, prosopagnosia is a pretty rare thing to have. Only about three percent of the population actually has it."
+    m 1eua "Anyways, thank you for listening to me again, [player]."
 return
