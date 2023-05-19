@@ -63,3 +63,37 @@ label wrs_mentalhealthwrs_rhythmgames:
     if not wrs_success:
         $ mas_unlockFailedWRS('wrs_mentalhealthwrs_rhythmgames')
     return
+
+
+init 5 python:
+    addEvent(
+        Event(
+            persistent._mas_windowreacts_database,
+            eventlabel="wrs_mentalhealthwrs_profile",
+            category=["TGSMonitiku67"],
+            rules={
+                "notif-group": "Window Reactions",
+                "skip alert": None,
+                "keep_idle_exp": None,
+                "skip_pause": None
+            },
+            show_in_idle=True
+        ),
+        code="WRS"
+    )
+
+label wrs_mentalhealthwrs_profile:
+    $ wrs_success = mas_display_notif(
+        m_name,
+        [
+            "Looking at a profile, [player]?",
+            "This looks oddly familiar, doesn't it, [player]?",
+            "Remember what I told you, [player]!"
+
+        ],
+        'Window Reactions'
+    )
+
+    if not wrs_success:
+        $ mas_unlockFailedWRS('wrs_mentalhealthwrs_profile')
+    return
