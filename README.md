@@ -1,17 +1,17 @@
 # MentalDisabilitySubmod
 A submod for Monika After Story that talks about mental disabilities and philosophy!
 
-Current Version: 1.2.2!
+Current Version: 1.3.0!
 
--Fixed dialog loops (For real this time!)
--Updated some grammar and spelling mistakes
--Changed file structure for greetings and some dialogue
--Met with chikiba for some coding practice
--Overhauled the mental checkups, with more updates planned
--Tidied up some of the spaceroom
+-Added new calendar events.
+-Added a new Mental Health Month Awareness Event
+-Added a few new dialogues
+-Talked to Chibika about datetime.date()
+-Begun to rework current variabels
+-Updated the credits
 
 Credits:
-HistoryVariety(Inital Dialog), TheGamerSide67(Main developer and dialog writer), LiveDaniReaction(dialog ideas, and tweaks), Leafeon_Mk (Dialog fixes, and co-developer)
+TheGamerSide67(Main developer,dialog writer, and geneal finalizer), LiveDaniReaction(dialogue ideas, and tweaks), Leafeon_Mk (Dialogue fixes, and co-developer)
 
 
 This is the release of the Mental Disability Submod for Monika After Story (MAS)
@@ -33,5 +33,6 @@ Future plans:
 The ability to tell Monika that you were recently diagnosed with a mental illness.
 The ability for Monika to detect the player wanting to learn more about mental illnesses, and warn the player of harmful sites to the understanding of mental illnesses.
 And much more I don't want to spoil!
+More month awareness celebrations with Monika!
 
 
