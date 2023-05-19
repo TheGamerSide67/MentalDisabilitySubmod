@@ -1,5 +1,17 @@
-#TODO: Update and overhaul dialogue to only show after a few days of asking, and force dialogue if not asked for over a week
 default persistent._mentalhealth_last_checkup = None
+define persistent._nextmentalcheckup = datetime.date.today()
+default persistent._lastmentalcheckup = None
+define persistent._mentalcheckupdeadline = datetime.timedelta(days=7) + datetime.date.today()
+
+
+label mentalcheckupscript:
+    $ persistent._lastmentalcheckup = datetime.datetime.today()
+    $ persistent._nextmentalcheckup = datetime.timedelta(days=1) + persistent._lastmentalcheckup
+    $ persistent._mentalcheckupdeadline = persistent._lastmentalcheckup + datetime.timedelta(days=6)
+    $ mas_getEV("mentalhealthcheckupdialoguefinal").start_date = persistent._nextmentalcheckup
+    $ mas_getEV("mentalhealthcheckupdialoguefinal").end_date = persistent._mentalcheckupdeadline
+
+return
 
 init python in mentalhealth:
     CHECKUP_GOOD = "good"
@@ -11,18 +23,20 @@ init 5 python:
     addEvent(
         Event(
             persistent.greeting_database,
-            eventlabel="mentalhealthcheckup_greeting",
-            unlocked=True,
+            eventlabel="mentalcheckup_greeting",
+            category=["you", "mental health"],
+            prompt="[player]'s Mental Health",
         ),
         code="GRE"
     )
 
-label mentalhealthcheckup_greeting:
+label mentalcheckup_greeting:
     if persistent._mentalhealth_last_checkup == store.mentalhealth.CHECKUP_GOOD:
         m 1hua "Oh hello, [player]!"
         m 3eua "I know I already asked you how you were mentally before... {w=0.2}{nw}"
         extend 7hub "And you told me your mental health was good!"
         m 1esd "Just to check up on you though..."
+        call mentalcheckupscript
         m 1esc "Has that changed, [player]?"
         menu:
             m "Has that changed, [player]?{fast}"
@@ -41,8 +55,9 @@ label mentalhealthcheckup_greeting:
         m 3eua "I know I already asked you how you were feeling mentally before... {w=0.2}{nw}"
         extend 1eua "And you told me your mental health was decent."
         m 1esc "Just to check up on you again though [player]..."
+        call mentalcheckupscript
         menu:
-            m "Has that changed, [player]?"
+            m "Has that changed, [player]?{fast}"
             "No I am still feeling alright.":
                 m 1eua "Alright [player], I am glad you are still fine today."
                 m 3eua "Let's continue to spend more time together!"
@@ -85,8 +100,9 @@ label mentalhealthcheckup_greeting:
         m 1euc "I know this is a awkward to bring up already..."
         m 3ekd "Especially since you told me your mental health wasn't good in the first place before..."
         m "Well, may I ask you if your mental state has improved, [player]?"
+        call mentalcheckupscript
         menu:
-            m "Well, may I ask you if your mental state has improved, [player]?"
+            m "Well, may I ask you if your mental state has improved, [player]?{fast}"
             "I don't want to talk about it right now...":
                 m 1dkc "{W=1}Oh... {nw}"
                 m "{w=1}Well... {nw}"
@@ -114,6 +130,7 @@ label mentalhealthcheckup_greeting:
     else:
         m 1hua "Oh hello, [player]!"
         m "I know this may seem awkward to ask you..."
+        call mentalcheckupscript
         $ _history_list.pop()
         menu:
             m "How is your mental health right now [player]?{fast}"
@@ -124,6 +141,7 @@ label mentalhealthcheckup_greeting:
                 m 5eua "What kind of girlfriend would I be if I didn't?"
                 $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_GOOD
                 $ _history_list.pop()
+                return
             "It's decent Monika...":
                 m 1euc "Oh..."
                 m 3euc "Well, that could be good or bad."
@@ -133,46 +151,63 @@ label mentalhealthcheckup_greeting:
                 m 1hua "I'll be sure to try my best to support you, I promise."
                 $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_NEUTRAL
                 $ _history_list.pop()
+                return
             "It's really bad right now...":
                 m 1euc "That's not good at all, [player]..."
                 m 3eud "If you ever get too upset or need to take a break just let me know, [player]. {w=.06}Okay?"
                 m 1eua "I will always be here for you! Never forget that!"
                 m 1eubsa "I love you and always will, [player]!"
                 $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_BAD
+                return
 return
 
-init 5 python:
-    addEvent(Event(persistent.event_database,eventlabel="mentalcheckupDialog",category=['you', 'mental health'],prompt="[player]'s Mental Health",random=True))
 
-label mentalcheckupDialog:
+
+init 5 python:
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="mentalhealthcheckupdialoguefinal",
+            category=["you", "mental health"],
+            prompt="[player]'s Mental Health",
+            action=EV_ACT_QUEUE,
+            start_date=persistent._nextmentalcheckup,
+            end_date=persistent._mentalcheckupdeadline
+            )
+        )
+
+label mentalhealthcheckupdialoguefinal:
     if persistent._mentalhealth_last_checkup == store.mentalhealth.CHECKUP_GOOD:
         m 1hua "Hey, [player]."
         m 3eua "I know I already asked you how you were mentally before... {w=0.2}{nw}"
         extend 7hub "And you told me your mental health was good!"
         m 1esd "Just to check up on you though..."
+        call mentalcheckupscript
         m 1esc "Has that changed, [player]?"
         menu:
             m "Has that changed, [player]?{fast}"
             "No, I am still feeling really great today!":
                 m 3eua "Alright [player], then let's continue having a good day together!"
+                return "derandom"
             "My mental state got worse today.":
                 m 1ekc "That's not good, [player]!"
                 m "It really hurts me to know that you aren't doing as well anymore."
                 m 3euc "If there is anything I can do to help you feel any better mentally just let me know, [player]!"
                 m 3eua "After all, what kind of girlfriend would I be if I didn't want to help you!"
                 $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_NEUTRAL
-        return
+                return "derandom"
     elif persistent._mentalhealth_last_checkup == store.mentalhealth.CHECKUP_NEUTRAL:
         m 1hua "Hey, [player]..."
         m 3eua "I know I already asked you how you were feeling mentally before... {w=0.2}{nw}"
         extend 1eua "And you told me your mental health was decent."
         m 1esc "Just to check up on you again though, [player]..."
+        call mentalcheckupscript
         menu:
             m "Has that changed, [player]?"
             "No I am still feeling alright.":
                 m 1eua "Alright [player], I am glad you are still fine today."
                 m 3eua "Let's continue to spend more time together! Hehe~"
-                $ _history_list.pop()
+                return "derandom"
             "My mental state actually got better recently!":
                 m 3hsa "That's exciting to hear [player]!"
                 if mas_isMoniHappy(higher=True):
@@ -181,13 +216,14 @@ label mentalcheckupDialog:
                     m 5hublb "I know thinking of you helps me get through everyday, [player]."
                     m 5eubfa "I love you so much, [mas_get_player_nickname()]."
                     $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_GOOD
-                    return "love"
+                    return "love|derandom"
                 else:
                     m 4esd "Whoever helped you mentally, you should be thankful for, [player]."
                     m 7euc "Not a lot of people ask for help either, which doesn't help them..."
                     m 3rusdlb "Sorry, I am getting off track, [player]!"
                     m 3eua "Let's spend more time together. {w=0.6}Okay?"
                     $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_GOOD
+                    return "derandom"
             "My mental state got worse Monika...":
                 m 1euc "That's not good, [player]!"
                 m 3eud "Did something bad happen while you were gone?"
@@ -197,18 +233,19 @@ label mentalcheckupDialog:
                     m 3eua "And if not, you can always vent to me about your problems, [player]."
                     m 5eubla "I love you~"
                     $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_BAD
-                    return "love"
+                    return "love|derandom"
                 else:
                     m 3euc "Make sure to talk to a therapist about your problems too."
                     m 4eud "Just talking to someone you care about, can really make you feel much better. {w=0.3}"
                     extend "Both mentally and emotionally."
                     m 7euc "Remember, I am always here for you, [player]!"
                     $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_BAD
-        return
+                    return "derandom"
     else:
         m 1hua "Hey, [player]."
-        m "I know this may seem awkward to ask you...{nw}"
-        m "How is your mental health right now, [player]?{fast}"
+        m "I know this may seem awkward to ask you..."
+        m "How is your mental health right now, [player]?"
+        call mentalcheckupscript
         $ _history_list.pop()
         menu:
             m "How is your mental health right now, [player]?{fast}"
@@ -219,21 +256,21 @@ label mentalcheckupDialog:
                 m 5eua "What kind of girlfriend would I be if I didn't?"
                 $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_GOOD
                 $ _history_list.pop()
-                return
+                return "derandom"
             "It's decent Monika...":
                 m 1ekc "Oh..."
                 m 2eka "Well, that could be good or bad."
                 m "And if it {i}is{/i} bad, then we can always talk about it if you want to, [player]."
-                m 3eua "I want to try and make sure you're always happy."
+                m 3eua "I want to try and make sure you're always happy. "
                 extend 1eka "Because that's what makes me happy."
                 m 1hua "I'll be sure to try my best to support you, I promise."
                 $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_NEUTRAL
                 $ _history_list.pop()
-                return
+                return "derandom"
             "It's really bad right now...":
                 m 1euc "That's not good at all, [player]..."
                 m 3euc "If you ever get too upset or need to take a break just let me know, [player], okay?"
-                if mas_isMoniHappy(higher=True) and renpy.random.randint(1,2) == 1:
+                if mas_isMoniHappy(higher=True) and renpy.random.randint(1,3) == 1:
                     m 7eua "Would a hug help you feel better, [player]?"
                     menu:
                         "Not right now Monika...":
@@ -247,8 +284,8 @@ label mentalcheckupDialog:
                     m 7eua "You already know that I will always be here for you, [player], never forget that!"
                     m 5eubsa "I love you and always will, [player]!"
                     $ persistent._mentalhealth_last_checkup = store.mentalhealth.CHECKUP_BAD
-                    return "love"
-return
+                    return "love|derandom"
+return "derandom"
 
 
 label mentalplayerhug_prep(lullaby=MAS_HOLDME_QUEUE_LULLABY_IF_NO_MUSIC, stop_music=False, disable_music_menu=False):
@@ -354,6 +391,14 @@ label mentalroom_greeting_ear_disability:
     m "That doesn't sound too bad...{w=2.0}{nw}"
     m "Oh my gosh!"
     m "Why would anyone say that about Autism?"
+    jump monikaroom_greeting_choice
+
+init 5 python:
+    gmr.eardoor.append("mentalroom_greeting_research")
+
+label mentalroom_greeting_research:
+    m "Hmm..."
+    m "There are a ton if things I haven't heard about this..."
     jump monikaroom_greeting_choice
 
 
