@@ -1,15 +1,16 @@
 default persistent._mentalhealth_last_checkup = None
 define persistent._nextmentalcheckup = datetime.date.today()
 default persistent._lastmentalcheckup = None
-define persistent._mentalcheckupdeadline = datetime.timedelta(days=7) + datetime.date.today()
+define persistent._mentalcheckupdeadline = datetime.timedelta(days=30) + datetime.date.today()
 
 
 label mentalcheckupscript:
-    $ persistent._lastmentalcheckup = datetime.datetime.today()
-    $ persistent._nextmentalcheckup = datetime.timedelta(days=1) + persistent._lastmentalcheckup
-    $ persistent._mentalcheckupdeadline = persistent._lastmentalcheckup + datetime.timedelta(days=6)
+    $ persistent._lastmentalcheckup = datetime.date.today()
+    $ persistent._nextmentalcheckup = datetime.timedelta(days=7) + persistent._lastmentalcheckup
+    $ persistent._mentalcheckupdeadline = persistent._lastmentalcheckup + datetime.timedelta(days=30)
     $ mas_getEV("mentalhealthcheckupdialoguefinal").start_date = persistent._nextmentalcheckup
     $ mas_getEV("mentalhealthcheckupdialoguefinal").end_date = persistent._mentalcheckupdeadline
+    $ mas_getEV("mentalhealthcheckupdialoguefinal").action = EV_ACT_QUEUE
 
 return
 
@@ -278,8 +279,8 @@ label mentalhealthcheckupdialoguefinal:
                             m 1eua "Alright, [player]."
                         "Actually, that would be great Monika.":
                             m 3eua "You can hold me as long as you like, [player]."
-                            call mentalplayerhug_prep #datetime.datetime.now()
-                            call mentalplayerhug
+                            call monika_holdme_prep(lullaby=MAS_HOLDME_NO_LULLABY, stop_music=True, disable_music_menu=True)
+                            call monika_holdme_start
                             call mentalplayerhugreactions
                     m 7eua "You already know that I will always be here for you, [player], never forget that!"
                     m 5eubsa "I love you and always will, [player]!"
@@ -287,30 +288,6 @@ label mentalhealthcheckupdialoguefinal:
                     return "love|derandom"
 return "derandom"
 
-
-label mentalplayerhug_prep(lullaby=MAS_HOLDME_QUEUE_LULLABY_IF_NO_MUSIC, stop_music=False, disable_music_menu=False):
-    python:
-        mentalholdme_events = list()
-    return
-
-label mentalplayerhug:
-    show monika 6dubsa with dissolve_monika
-    window hide
-    python:
-        # Start the timer
-        mental_hugtimestart = datetime.datetime.now()
-
-        mentalholdme_disp = PauseDisplayableWithEvents(events=mentalholdme_events)
-        mentalholdme_disp.start()
-
-        del mentalholdme_events
-        del mentalholdme_disp
-
-        # Renable ui and hotkeys
-        store.songs.enabled = True
-        HKBShowButtons()
-    window auto
-    return
 
 label mentalplayerhugreactions:
     $ elapsed_time = datetime.datetime.now() - mental_hugtimestart
@@ -398,7 +375,5 @@ init 5 python:
 
 label mentalroom_greeting_research:
     m "Hmm..."
-    m "There are a ton if things I haven't heard about this..."
+    m "There are a tone if things I haven't heard of here..."
     jump monikaroom_greeting_choice
-
-
