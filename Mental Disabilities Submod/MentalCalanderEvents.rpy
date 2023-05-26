@@ -7,8 +7,8 @@ init python:
     calendar.addRepeatable("MentalHealthAwarenessEnd",_("End of MHAM"),month=5,day=31,year_param=list())
 
 #Setup The years for the Mental Health Awareness Month
-define persistent._mentalhealthmonthstart = datetime.date(datetime.date.today().year, 5, 1)
-define persistent._mentalhealthmonthend = datetime.date(datetime.date.today().year, 5, 31)
+default persistent._mentalhealthmonthstart = datetime.date(datetime.date.today().year, 5, 1)
+default persistent._mentalhealthmonthend = datetime.date(datetime.date.today().year, 5, 31)
 default persistent._mentalhealthleapyear = 4
 
 
@@ -92,4 +92,44 @@ label MentalHealthMonth:
         m 1eubsa "I will do my best to make sure you are happy, and to help you calm down whenever you get upset."
         m 5dubsa "I truly do love you, [mas_get_player_nickname(exclude_names=['my love', 'love'])]."
 return "love"
-    
+
+init 5 python:
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="mentalhealthmonthresettime",
+            category=["monika"],
+            prompt="Mental Health Variables",
+            action=EV_ACT_QUEUE,
+            start_date=datetime.date.today(),
+            end_date=datetime.date(2023, 12, 31),
+            random=False,
+            rules={"no_unlock"}
+            )
+        )
+
+label mentalhealthmonthresettime:
+    m 1eua "Hey, [player]..."
+    m 1eud "I am going to go check on something, I'll be right back..."
+    call mas_transition_to_emptydesk
+    pause 5.0
+    call variablesresetmentalchange
+    call mas_transition_from_emptydesk()
+    m 1eua "I am back now, [player]."
+return "derandom"
+
+label variablesresetmentalchange:
+    $ mas_getEV("mentalhealthcheckupdialoguefinal").action = EV_ACT_QUEUE
+    $ mas_getEV("MentalHealthMonth").action = EV_ACT_QUEUE
+    $ persistent._mentalhealthmonthstart = datetime.date(2024, 5, 1)
+    $ persistent._mentalhealthmonthend = datetime.date(2024, 5, 31)
+    $ persistent._mentalhealthleapyear = 0
+    $ mas_getEV("MentalHealthMonth").start_date = persistent._mentalhealthmonthstart
+    $ mas_getEV("MentalHealthMonth").end_date = persistent._mentalhealthmonthend
+    $ persistent._lastmentalcheckup = datetime.date.today()
+    $ persistent._nextmentalcheckup = datetime.date.today() + datetime.timedelta(days=1)
+    $ persistent._mentalcheckupdeadline = persistent._lastmentalcheckup + datetime.timedelta(days=30)
+    $ mas_getEV("mentalhealthcheckupdialoguefinal").start_date = persistent._nextmentalcheckup
+    $ mas_getEV("mentalhealthcheckupdialoguefinal").end_date = persistent._mentalcheckupdeadline
+return
+
