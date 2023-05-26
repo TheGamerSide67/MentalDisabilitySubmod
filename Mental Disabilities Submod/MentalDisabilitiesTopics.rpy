@@ -183,7 +183,7 @@ init 5 python:
 label mentalmeditation:
     m 3eua "Have you ever heard of meditation, [player]?"
     m 1eub "Meditation is the act of balancing your emotions and staying in touch with your surroundings."
-    m 7eud "While it may sound interesting at first, it takes a lot of commentment and effort to actually meditate."
+    m 7eud "While it may sound interesting at first, it takes a lot of commitment and effort to actually meditate."
     if persistent._mental_player_has_ADHD == True:
         m 3rusdld "This is because it will be really hard for you to sit still for long periods of time. "
         extend 1eud "Not only that, but you also have to make it a new routine, [player]."
