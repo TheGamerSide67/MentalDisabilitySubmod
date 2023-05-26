@@ -1,7 +1,7 @@
 # MentalDisabilitySubmod
 A submod for Monika After Story that talks about mental disabilities and philosophy!
 
-Current Version: 1.3.0!
+Current Version: 1.3.1!
 
 -Added new calendar events.
 -Added a new Mental Health Month Awareness Event
