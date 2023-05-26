@@ -317,7 +317,7 @@ label mentalProsopagnosia:
     m 1eua "Hey, [player]."
     m 3eua "Have you ever heard of prosopagnosia?"
     m 1euc "Well, in short, it's a mental disability that makes it hard to recognize faces."
-    m 7eud "Prosopagnosia has a few different words for it, like '{i}face blindness{/i}' and '{i}facial agnosia{/i}'. But you probably shouldn't use latter term..."
+    m 7eud "Prosopagnosia has a few different words for it, like '{i}face blindness{/i}' and '{i}facial agnosia{/i}'. But you probably shouldn't use the latter term..."
     m 1euc "You can imagine how this can be pretty impactful on someone's day to day life, huh, [player]?"
     m 3eud "Well, there are different severities of prosopagnosia. Like being only recognize familiar faces, but not strangers. {w=0.75}{nw}"
     extend 3rusdld "Or seeing objects and faces as the same thing..."
