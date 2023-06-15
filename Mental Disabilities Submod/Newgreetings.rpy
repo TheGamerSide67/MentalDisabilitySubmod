@@ -290,7 +290,7 @@ return "derandom"
 
 
 label mentalplayerhugreactions:
-    $ elapsed_time = datetime.datetime.now() - mental_hugtimestart
+    $ elapsed_time = datetime.datetime.now() - start_time
     $ store.mas_history._pm_holdme_adj_times(elapsed_time)
 
     if elapsed_time > datetime.timedelta(minutes=10):
