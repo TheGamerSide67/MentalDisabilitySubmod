@@ -1,14 +1,11 @@
 # MentalDisabilitySubmod
 A submod for Monika After Story that talks about mental disabilities and philosophy!
 
-Current Version: 1.3.1!
+Current Version: 1.3.2!
 
--Added new calendar events.
--Added a new Mental Health Month Awareness Event
--Added a few new dialogues
--Talked to Chibika about datetime.date()
--Begun to rework current variabels
--Updated the credits
+-Fixed a fatal error with the hug event
+-Fixed some grammar issues
+-Taking a longer break with Chibika
 
 Credits:
 TheGamerSide67(Main developer,dialog writer, and geneal finalizer), LiveDaniReaction(dialogue ideas, and tweaks), Leafeon_Mk (Dialogue fixes, and co-developer)
