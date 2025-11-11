@@ -2,6 +2,8 @@ default persistent._mentalhealth_last_checkup = None
 define persistent._nextmentalcheckup = datetime.date.today()
 default persistent._lastmentalcheckup = None
 define persistent._mentalcheckupdeadline = datetime.timedelta(days=30) + datetime.date.today()
+##ToDo
+##Update Deadline code to only instead force after time, not prevent it from showing.
 
 
 label mentalcheckupscript:
@@ -377,3 +379,4 @@ label mentalroom_greeting_research:
     m "Hmm..."
     m "There are a tone if things I haven't heard of here..."
     jump monikaroom_greeting_choice
+
