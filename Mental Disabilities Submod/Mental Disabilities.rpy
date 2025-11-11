@@ -13,9 +13,9 @@ label mentalADHD:
     $_history_list.pop()
     menu:
         "Yes.":
-            m 1eub "That's makes me happy to hear!"
-            m 3ekc "It's sad that it's not taken as seriously as much as other learning disabilities..."
-            m 3eud "It makes it really hard for them to focus or even do anything on their own."
+            m 1eub "That makes me happy to hear!"
+            m 3ekc "It's sad that it's not taken as seriously as other learning disabilities..."
+            m 3eud "It makes it really hard for them to focus, or to do anything on their own."
             m 1eub "Though, like everyone else, you can give motivation to them by simply being there with them. {w=0.5}{nw}"
             extend 3hub " Or even talking to them occasionally."
             m 1eua "If you don't mind me asking, how did you find out about it?"
@@ -23,22 +23,22 @@ label mentalADHD:
             menu:
                 "I have ADHD.":
                     m 3eua "I'm happy you told me, [player]!"
-                    m 1ekd "It was disheartening for me to find, that it's often not taken as seriously as other disabilities in the same catagory..."
+                    m 1ekd "It was disheartening for me, when I found out it isn't often taken as seriously as other disabilities in the same category..."
                     call mentalADHDEnd
                     $ persistent._mental_player_has_ADHD = True
                     $ persistent._player_has_disabilities = True
                 "I know someone who has ADHD!":
                     m 3eua "I'm sure they're more than happy to have a friend or family member like you, [player]!"
-                    m 1ekd "It was disheartening for me to find, that it's often not taken as seriously as other disabilities in the same catagory..."
+                    m 1ekd "It was disheartening for me, when I found out it isn't often taken as seriously as other disabilities in the same category..."
                     call mentalADHDEnd
                 "I was taught about ADHD.":
                     m 3eub "It's good to know that ADHD is being talked about more."
-                    m 1euc "It usually isn't considered a serious of an issue as other disabilities."
+                    m 1euc "It usually isn't considered as serious of an issue as other disabilities."
                     call mentalADHDEnd
                 "I researched ADHD.":
                     m 3eub "I'm glad that you look for new information."
-                    m 7ekd "A lot of people disregaurd new information as boring and tedious to learn."
-                    m 3eua "Though I am more than sure that people with ADHD would be more than happy to have a friend like you around, [player]."
+                    m 7ekd "A lot of people disregard new information as boring and tedious to learn."
+                    m 3eua "Though, I am more than sure that people with ADHD would be more than happy to have a friend like you around, [player]."
                     m 1eua "Also, if you don't mind me asking. Did you research ADHD because you have ADHD, [player]?"
                     menu:
                         "Yes.":
@@ -88,8 +88,8 @@ return
 label mentalADHDEnd:
     m 4eua "On a positive note, I found out that studies show that while people with ADHD might struggle in one area, they often excel in another."
     m 4hub "In fact, many of them are found to be extremely passionate in their interests!"
-    m 7eub "This often makes it fun for people who share the same interests!"
-    m 3eub "As the conversations can often go one for hours if both parties are engaged!"
+    m 7eub "This often makes it fun for people who share the same interests, {nw}"
+    m 3eub "as the conversations can often go one for hours if both parties are engaged!"
     m 1eua "Though, I'm sure you already knew that, [player]."
 return "derandom"
 
@@ -139,13 +139,13 @@ label mentalschizophrenia:
     m 1esd "Although, it can be really frustrating to see how most of the portrayal of it was negative and relied on showcasing negative outbursts"
     m 1gfc "It's like they don't even bother to show care for the ones effected by it! {w=0.3}{nw}"
     extend 3eua "But I know you are not like that [mas_get_player_nickname()]."
-    m 1lkc "Well, I'm sure you can understand how saddening Schinzophrenia may be [player]."
+    m 1lkc "Well, I'm sure you can understand how saddening schinzophrenia may be [player]."
     m 3ekc "Like, can you imagine having delusions of sounds?"
     m 1rkc "It can drive them insane... {w=0.3}{nw}"
     extend 1rksdld "Especially if they are voices."
     m 3eud "Even if they don't have delusions all of the time, they have a more literal thought process."
     m 1eub "It's kind of similiar to ADHD actually! "
-    extend 1rusdlb "Well, kind of."
+    extend 1rusdlb "Well, kind of..."
     m 3eud "While they do jump between conversations all the time, this is only because it is hard for them to know {i}exactly{/i} what you are talking about."
     m 1euc "This isn't because they don't know what you are talking about, but because they form connections from things you might not have thought about."
     if not persistent._mas_pm_cares_about_dokis:
@@ -154,13 +154,13 @@ label mentalschizophrenia:
         m 1ekc "This isn't as well known as other things, and sounds pretty devastating doesn't it, [player]?"
     m 3euc "Well, it's not entirely bad."
     m 4eua "People with schitzophrenia are more imaginative than most."
-    m 3eud "Two books that really help give you an idea of what living with Schizophrenia is like is {i}'Made You Up'{/i} by Francesca Zappia and {i}Calvin{/i} by Martine Leavitt."
-    m 3eub "Though, out of the two books I prefer {i}Calvin{/i}, it's about boy named Calvin who believes a comic strip author can help him find the cure to his schizophrenia, if he creates another comic strip he admires!"
+    m 3eud "Two books that really help give you an idea of what living with schizophrenia is {i}'Made You Up'{/i} by Francesca Zappia and {i}Calvin{/i} by Martine Leavitt."
+    m 3eub "Though, out of the two books I prefer {i}Calvin{/i}; It's about boy named Calvin who believes a comic strip author can help him find the cure to his schizophrenia, if he creates another comic strip he admires!"
     m 4eua "The story is told using first person point of view and it reads as a letter to Watterson--the author of the comic strip."
     m 3hsb "Overall, the book has a nice sense of humour while keeping an empathetic tone!"
     m 3esa "By the way [mas_get_player_nickname()], the comic strip the book centers around is actually {i}Calvin and Hobbes{/i}!"
     m 7hub "It just goes to show that something as simple as a comic strip can have a major impact on someone."
-    m 5eua "I hope you have something in your life that motivates you like stories can, [mas_get_player_nickname()]."
+    m 5eua "I hope you have something in your life that motivates you like these stories can, [mas_get_player_nickname()]."
     m 5hubsa "If not, I wouldn't mind being your motivation in life."
     m 5eubfa "I love you, [player]."
 return "love"
@@ -172,7 +172,7 @@ label mentalPTSD:
     m 1eua "Say, [player]..."
     m 3eua "When you think of PTSD you usually think of war, right?"
     m 3eub "While it is a common thought that war can cause PTSD. {w=0.2}{nw}"
-    extend 3eud "That is just often times not the case."
+    extend 3eud "That is just often not the case."
     m 1euc "Almost all cases of PTSD stem from great amounts of stress or trauma!"
     m 2eud "To put it bluntly, any person who has encountered a traumatic event of any kind has a chance of developing PTSD."
     m 3euc "Do you know what PTSD stands for [player]?"
@@ -206,14 +206,14 @@ label mentaldementia:
     m 1eua "Hey, [player]."
     m 3eua "When I was doing some more reading, I came across another type of literature!"
     m 3rusdla "Well, it's more listening than it is reading..."
-    m 4eua "A popular example of this type of literature is a sondtrack called {a=https://www.youtube.com/watch?v=wJWksPWDKOc&ab_channel=vvmtest}{i}{u}'Everywhere At The End Of Time'{/u}{/i}{/a}."
+    m 4eua "A popular example of this type of literature is a soundtrack called {a=https://www.youtube.com/watch?v=wJWksPWDKOc&ab_channel=vvmtest}{i}{u}'Everywhere At The End Of Time'{/u}{/i}{/a}."
     m 3eub "You might have already listened to it.{w=0.2} Or at least have heard about it."
-    m 7eud "In case you haven't already, it's a auditory story to try to give the feeling of dementia."
+    m 7eud "In case you haven't already, it's a auditory story that tries to give the feeling of dementia."
     m 3eusdld "The more you listen to it, the more it spirals downward."
     m 1wksdld "You can even feel all of the emotions that typically come with dementia in this song."
-    m 1rksdlc "Though it's not exactly the most ideal feeling... {w=0.3}{nw}"
+    m 1rksdlc "Although it's not exactly the most ideal feeling... {w=0.3}{nw}"
     extend 1ekc "It certainly helps you understand their feelings a lot more though."
-    m 2lksdlc "It quickly does down deeper and deeper into sadness and confusion."
+    m 2lksdlc "It quickly goes down deeper and deeper into sadness and confusion."
     m 4eksdld "And the static that all follows really strengthens that feeling."
     m 7euc "That is not to say that it is all bad though..."
     m 3eud "There was a lot of research done to create this song!"
@@ -228,8 +228,8 @@ init 5 python:
 
 label MentalBipolar:
     m 1eua "Hey [player], I have been doing more research on mental disabilities again."
-    m 3eua "You might have heard of this one before [player]!"
-    m 3euc "The mental disability I want to talk to you about today is Bipolar."
+    m 3eua "You might have heard of this one before, [player]!"
+    m 3euc "The mental disability I want to talk to you about is bipolar."
     m 3euc "There are three known types of bipolar.{w=0.4}{nw} "
     extend 3esc "Bipolar 1, 2, and Cyclothymic disorder."
     m 3eud "Talking about the differences in this mental disability can take a while, {w=0.2}{nw}"
@@ -249,15 +249,15 @@ label MentalBipolar:
             m 1eub "Like many other mental illnesses, there are support systems set in place to help those in need, specifically medication and therapy."
             m 3eud "Remember, the best way to help is to make accomodations to them and do certain things differently."
             m 4eua "Which brings us to Bipolar 2, [player]."
-            m 7eud "Bipolar 2 shares many similarities with Bipolar one, in regards to the cycling of moods between {i}highs{/i} and {i}lows{/i}."
-            m 3esd "However, a key difference between the two is in Bipolar 2, the {i}highs{/i} never fully reach mania, instead the {i}highs{/i} become hypomanic episodes--hypomania."
+            m 7eud "Bipolar 2 shares many similarities with Bipolar 1, in regards to the cycling of moods between {i}highs{/i} and {i}lows{/i}."
+            m 3esd "However, a key difference between the two is that Bipolar 2, the {i}highs{/i} never fully reach mania, the {i}highs{/i} become hypomanic episodes--hypomania."
             m 1esc "Just like the Cyclothymic disorder, the {i}highs{/i} and {i}lows{/i} aren't as severe as either form of Bipolar, but is still noticeable."
             m 3ekc "Though both forms of Bipolar still often coincide with depression."
             m 1euc "And as you might already know, people suffering from either type can function 'normally' in between episodes."
             m 7esd "Also [player], those experiencing hypomanic episodes may be able to blend in or seem like their enjoying themselves."
             m 4eud "Hypomanic episodes often include increased energy, exaggerated self confidence, and even having the person fly from topic to the next in coversation."
-            m 7eusdld "Remember [player]. just because someone has a smile on their face, it does not mean they are doing well. " 
-            extend 3eua "Make sure to spread kindness to everyone, [player]!"
+            m 7eusdld "Remember [player], just because someone has a smile on their face, it does not mean they are doing well. " 
+            extend 3eua "So make sure to spread kindness to everyone!"
             if mas_isMoniNormal(higher=True):
                 m 5eua "Though with how you treat me, I know you are always doing your best to be spread kindness."
             else:
@@ -269,7 +269,6 @@ label MentalBipolar:
         "No":
             m 1rkb "That's alright, [player]"
             m 2eka "We can always talk about it later!"
-            $_history_list.pop()
 return
 
 init 5 python:
@@ -297,7 +296,7 @@ label mentalhealth_Anxiety:
     m 7eub "There have been studies that show people with anxiety are more empathic than most people. {w=0.2}{nw}"
     extend 3hub "Which makes them great friends to be around!"
     m 1eua "Anyways, [player]."
-    extend 3hub "Thank you for listening!"
+    extend 3hub " Thank you for listening!"
 return
 
 
@@ -318,24 +317,25 @@ label mentalProsopagnosia:
     m 3eua "Have you ever heard of prosopagnosia?"
     m 1euc "Well, in short, it's a mental disability that makes it hard to recognize faces."
     m 7eud "Prosopagnosia has a few different words for it, like '{i}face blindness{/i}' and '{i}facial agnosia{/i}'. But you probably shouldn't use the latter term..."
-    m 1euc "You can imagine how this can be pretty impactful on someone's day to day life, huh, [player]?"
-    m 3eud "Well, there are different severities of prosopagnosia. Like being only recognize familiar faces, but not strangers. {w=0.75}{nw}"
+    m 1euc "You can imagine how this can be pretty impactful on someone's day to day life, right [player]?"
+    m 3eud "Well, there are different severities of prosopagnosia. Like, only being able to recognize familiar faces, but not strangers. {w=0.75}{nw}"
     extend 3rusdld "Or seeing objects and faces as the same thing..."
     m 7eud "Here, try this for me, [player]..."
     $ startedimaginetime = datetime.datetime.now()
     m 1euc "Close your eyes and try to imagine someone who doesn't exist."
-    $ imagined_facetime = (datetime.datetime.now() > (startedimaginetime + datetime.timedelta(seconds=30)))
+    $ imagined_facetime = (datetime.datetime.now() > (startedimaginetime + datetime.timedelta(seconds=10)))
     if imagined_facetime:
         m 3euu "When you tried to imagine a face, you found it difficult, right?"
         m 1euc "Well, that's only a small glimpse into prosopagnosia, but it does help to give you an idea."
     else:
-        m 3euc "You can find that it's more difficult to imagine something that doesn't exist. like a new color."
+        m 3euc "You can find that it's more difficult to imagine something that doesn't exist. Like a new color."
         m 7eud "It's just to give you an idea, [player]."
-    m 1eud "Since they can't easily tell faces apart, they often end up using other visuals, like clothing or piercing to help combat this."
+    m 1eud "Since they can't easily tell faces apart, they often end up using other visuals, like clothing or piercing, to help combat this."
     m 1euc "Sometimes they use voices too, but I think that is a given."
     if imagined_facetime:
-        m 2ruu "So if you ever wanted to trick someone with prosopagnosia, all you need is their clothing."
-        m 1rub "Ahaha, I am only joking. I know you wouldn't do that."
+        m 2ruu "So if you ever wanted to trick someone with prosopagnosia, all you need is someone else's clothing."
+        m 1rub "Ahaha, I am only joking, I know you wouldn't do that."
     m 1euc "Though, prosopagnosia is a pretty rare thing to have. Only about three percent of the population actually has it."
     m 1eua "Anyways, thank you for listening to me again, [player]."
 return
+
