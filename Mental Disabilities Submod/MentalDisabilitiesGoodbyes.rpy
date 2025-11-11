@@ -6,7 +6,7 @@ init 5 python:
             persistent.farewell_database,
             eventlabel="mental_leave_therapist",
             unlocked=True,
-            prompt="I'm going to go to an appointment.",
+            prompt="I'm going to an appointment.",
             pool=True
         ),
         code="BYE"
@@ -34,3 +34,4 @@ $ persistent._mental_health_player_goes_to_therapy = True
 $ persistent._mas_greeting_type_timeout = datetime.timedelta(hours=5)
 $ persistent._mas_greeting_type = store.mas_greetings.TYPE_MentalAppointment
 return "quit"
+
