@@ -347,3 +347,150 @@ label mental_autism_media:
     m 1eud "Of course, there are also harmful ways to showcase any disability, so if you want to research anything, just make sure to check your sources."
     m 1eub "Anyways, thank you for listening, [player]."
 return
+
+init 5 python:
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="mental_painful_hearts",
+            category=['psychology', 'philosophy'],
+            prompt="Painful Hearts",
+            conditional="mas_seenLabels(['mentalPTSD'])",
+            random=True
+        )
+    )
+
+label mental_painful_hearts:
+    m 1eua "Hey, [player]?"
+    m 3eua "Do you remember when I talked about childhood injuries?"
+    m 1eud "Well, I've been thinking about that on a more philosophical level recently..."
+    m 3eud "There are two kinds of pain.{w=0.4} Mental and physical."
+    m 3euc "When you fall off a bike and scrape your knee; It can easily be treated with a bandage."
+    m 1euc "However, you can't treat emotional or mental pain the same way."
+    m 3esc "You can't easily see these kinds of pain compared to a bruise."
+    m 1etd "It's really saddening to think about..."
+    m 1ekd "Some of them refuse to get help on these issues, because they can feel outcasted or embarassed by their pain, so they try to trap them away."
+    m 7etc "And with the rise of motivational speakers, those who {i}do{/i} want help, can sometimes get bad advice."
+    m 1eud "Take for example one of the most common suggestions; To work out at the gym."
+    m 3euc "While it isn't entirely bad advice, it doesn't encourage anyone to truely tackle their pain head-on."
+    m 1ruc "Which sadly can lead to an even worse cycle, or can start to convince others to believe that everyone else is the problem..."
+    m 1rusdrb "Sorry for getting too deep into this..."
+    m 1eud "It's just saddening to know that so many people either don't get proper help with their mental health...{w=1.3}{nw}"
+    extend 1euc " Or simply feel as if they can't get any help."
+    
+    if persistent._mentalhealth_last_checkup == store.mentalhealth.CHECKUP_BAD:
+        m 1euc "Speaking of this topic...{w=2}{nw}"
+        m 3eud "I realy do hope that you are getting the help that you need, [player]. {w=0.4}{nw}"
+        extend "Or at least trying to..."
+        m 7esd "I know it can be very hard to try to fight your own issues on by yourself, but being honest about how you feel is he first step."
+    
+    else:
+        m 1euc "Speaking of this topic..."
+        m 7esd "Being honest about how you feel, and what happened, is one of the first steps to healing."
+
+    m 1husdlb "Ahaha, I hope I don't sound too dramatic, [player]."
+    m 3euc "I think it's just better than beating yourself up over simple mistakes or things that weren't entirely your fault."
+    m 1euc "It's important to know what actually happened, rather than what you think happened."
+    m 7eud "Remember that our minds change how we see the world based on what we constantly tell ourselves."
+    m 7eka "So remember that you are beautiful, [player]{w=0.9}, and that no matter what, I know you will do the right thing."
+    m 1eubla "I love you, [mas_get_player_nickname(exclude_names=['my love', 'love'])]."
+    m 3eua "Just promise to always take it one day at a time, okay?"
+return "love"
+
+init 5 python:
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="mental_desensitization",
+            category=['psychology', 'media'],
+            prompt="Desensitization",
+            conditional="mas_seenLabels(['mental_autism_media', 'mental_trends', 'monika_social_norms','monika_pleasure'])",
+            random=True
+        )
+    )
+
+label mental_desensitization:
+    m 1eua "I have been thinking a lot more about the way media effects our minds, [player]."
+    m 1euc "Well, more about the way it can change what how we react to things."
+    m 3eud "As we already mentioned before, this is how things become normal in society when it's on a massive scale."
+    m 7euc "Like how rock music used to be considered vulgar, or extreme."
+    m 3eub "However, now a lot of people don't seem to have strong opinions on it, and even enjoy listening to rock music now."
+    m 1eua "This happened over time, as more people were exposed to this genre of music."
+    m 3eub "Not to mention, that those who enjoyed rock music, wanted to show their friends or relatives."
+    m 1euc "Now if we talk about the more negative side of desensitization, then we can talk about 'Shock Content'."
+    m 3eud "In case you don't know what shock content is, [player]."
+    m 1esc "Shock content has the sole purpose of getting a reaction out of the viewer; Usually anger or disgust."
+    m 3esd "And if someone has seen enough of this graphic content, they can eventually have little to no reaction out of it."
+    m 1rsc "Or even worse...{w=1.3} They begin to see it as a new normality in their life."
+    if mas_seenLabels(['monika_nsfw']) == True:
+        m 1rssdlc "Especially with pornographic content...{fast}{nw}"
+        $_history_list.pop()
+    m 3esd "Once someone no longer considers something as '{i}a big deal{/i}' anymore, you really can't do much to make them see it in a different way."
+    m 1euc "Especially when those things are discrimination and social stimgas to spread around."
+    m 3esd "With friends, they can start off as insensitive jokes, and after enough times, it can eventually becomes a part of your vocabulary..."
+    m 3esc "Or it can be someone who makes others feel like they have to do something to fit in with a group..."
+    m 1euc "I'm sure you understand my point now, [player]."
+    m 1eka "While you can't really control what others do or say, you can change the way you do."
+    if persistent._mental_nopromise == True:
+        m 3eka "You really don't have to force yourself to be around topics you don't like either."
+        m 7ekd "And it will only make you feel worse about the people you are around."
+        m 1ekb "Just be mindful of what you interact with, [player]."
+    else:
+        m 3eua "Just be mindful of what you interact with, [mas_get_player_nickname()]."
+return
+
+init 5 python:
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="mental_nailbiting",
+            category=['coping skills', 'psychology'],
+            prompt="Nail biting",
+            conditional="mas_seenLabels(['monika_anxious'])",
+            random=True
+        )
+    )
+
+label mental_nailbiting:
+    m 1euc "Say, [player]...{w=0.8} Do you bite your nails?"
+    m 3hub "Ahaha, I know this sounds a bit silly out of nowhere, but it is a real concern."
+    m 3euc "Some people bite their nails to distract themselves from their anxiety or stress."
+    m 1ruc "Sometimes to the point where they start to bleed..."
+    m 1eud "This doesn't just apply to your nails, either."
+    m 3euc "Biting things like bottle caps, the collar of your shirt, your hair..."
+    m 7ekc "All of those things can mess up your teeth or what you are chewing on. Especially if it's your hair..."
+    m 1euc "Anyways, if you do bite on things to cope, [player]...{w=1.2} Try to notice when you do it, and try to stop, okay?"
+    m 3eua "Like, maybe having a pack of gum nearby and chewing that instead."
+    m 1eua "It will help in the long run to develop healthier coping skills."
+return
+
+init 5 python:
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="mental_streisand_effect",
+            category=['philosophy', 'media'],
+            prompt="The Streisand Effect",
+            random=True
+        )
+    )
+
+label mental_streisand_effect:
+    m 1eua "Have you ever heard of the Streisand Effect, [player]?"
+    m 3eua "Well, the Streisand effect is when an attempt is made to hide information, but it instead backfires and the information becomes more well known than before."
+    m 7eub "There are all sorts of examples of this phenomenon occuring that are all over the internet."
+    m 1eua "But the most popular example is when {i}Barbra Streisand{/i} wanted a photographer to remove a photo of her house from a website."
+    m 3eud "This in turn, led to more traffic to the photo on the website that she sent a legal letter to, requesting the image to be removed."
+    m 1eud "The news spread like a wild fire, being talked about almost everywhere. "
+    extend 1luc "And a lot more people certainly knew about it then."
+    if mas_seenLabels(['monika_wabi_sabi']) == True:
+        m 3euc "I guess that goes to show that focusing on control, can just end up meaning you had none to begin with."
+        m 1guc "Or at least to be quieter with your complaints. {nw}"
+        extend 3eub "Kidding of course!"
+    else:
+        m 1lfu "I guess that just means you should just take down the internet instead! {nw}"
+        extend 3eub "Kidding of course!"
+
+    m 1eub "It just means that you should take your flaws with pride. {nw}"
+    extend 1eua "So accept and overcome them, instead of needing to control or hide them."
+return
