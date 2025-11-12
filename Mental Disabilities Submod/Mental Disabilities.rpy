@@ -247,7 +247,7 @@ label MentalBipolar:
             m 3eud "Have you ever heard of the term {i}manic depression{/i}? Well that's where it comes from."
             m 7eua "That isn't to say that people who suffer from Bipolar 1 can't live normal lives, often in-between episodes they do just fine."
             m 1eub "Like many other mental illnesses, there are support systems set in place to help those in need, specifically medication and therapy."
-            m 3eud "Remember, the best way to help is to make accomodations to them and do certain things differently."
+            m 3eud "Remember, the best way to help is to make accommodations for them and do certain things differently."
             m 4eua "Which brings us to Bipolar 2, [player]."
             m 7eud "Bipolar 2 shares many similarities with Bipolar 1, in regards to the cycling of moods between {i}highs{/i} and {i}lows{/i}."
             m 3esd "However, a key difference between the two is that Bipolar 2, the {i}highs{/i} never fully reach mania, the {i}highs{/i} become hypomanic episodes--hypomania."
@@ -338,5 +338,6 @@ label mentalProsopagnosia:
     m 1euc "Though, prosopagnosia is a pretty rare thing to have. Only about three percent of the population actually has it."
     m 1eua "Anyways, thank you for listening to me again, [player]."
 return
+
 
 
