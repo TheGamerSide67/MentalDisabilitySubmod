@@ -243,7 +243,7 @@ label MentalBipolar:
             m 4esc "Well, as you already know [player], bipolar attacks, also known as manic episodes, cause the effected person to be sent into either 'highs' or 'lows'."
             m 7esb "Which can either give them extreme amounts of energy or will to do something unusually, {w=0.6}{nw}"
             extend 3rusdlc "or it can also send them into a state of mild, to even {i}severe{/i} depression episodes."
-            m 1euc "Unfourtanely, this usually leads to a cycle between the two."
+            m 1euc "Unfortunately, this usually leads to a cycle between the two."
             m 3eud "Have you ever heard of the term {i}manic depression{/i}? Well that's where it comes from."
             m 7eua "That isn't to say that people who suffer from Bipolar 1 can't live normal lives, often in-between episodes they do just fine."
             m 1eub "Like many other mental illnesses, there are support systems set in place to help those in need, specifically medication and therapy."
@@ -338,4 +338,5 @@ label mentalProsopagnosia:
     m 1euc "Though, prosopagnosia is a pretty rare thing to have. Only about three percent of the population actually has it."
     m 1eua "Anyways, thank you for listening to me again, [player]."
 return
+
 
