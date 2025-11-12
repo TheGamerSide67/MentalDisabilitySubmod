@@ -53,6 +53,7 @@ label mental_PTSD_Anxietyfunfact:
     m 1eud "Compared to an anxiety disorder that has the constant fear of the {i}possibility{/i} of something ever happening."
     m 1eua "There is always more to disorders than what you think, and they are all connected in a way."
     call mas_fun_facts_end
+return
 
 init 5 python:
     addEvent(
@@ -72,3 +73,5 @@ label mental_conformist_trendsFF:
     m 1duc "It's a pretty negative spiral to get into."
     m 1eua "Anyways, I think I am getting off track here."
     call mas_fun_facts_end
+return
+
