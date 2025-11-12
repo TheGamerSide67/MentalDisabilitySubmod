@@ -1,10 +1,10 @@
 # Register the submod
 init -990 python:
     store.mas_submod_utils.Submod(
-        author="TheGamerSide67 HistoryVariety and Leafeon_Mk",
+        author="TheGamerSide67",
         name="Mental Disabilities Submod",
         description="A large submod dedicated to the talk of philosophy and mental disabilites and more!",
-        version="1.3.2",
+        version="1.4",
     )
 
 # Register the updater
@@ -17,3 +17,4 @@ init -989 python:
             repository_name="MentalDisabilitySubmod",
             extraction_depth=2
         )
+
