@@ -20,7 +20,7 @@ You can also support me with Ko-fi; https://ko-fi.com/thegamerside67
 How to install the submod:
 
   To install the submod you can click on the "code" tab above this "ReadME" file!
-  Once you have the Zip file added, make sure to extract all of the file into your "game" folder in your MAS (Monika After Story) DDLC directory!
+  Once you have the Zip file added, make sure to extract all of the file into your "Submods" folder in your MAS (Monika After Story) DDLC directory!
 
 How do I update the submod?
   Make sure you install the Submod updater plugin here; https://github.com/Booplicate/MAS-Submods-SubmodUpdaterPlugin
