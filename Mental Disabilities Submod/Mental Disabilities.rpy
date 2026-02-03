@@ -173,28 +173,31 @@ label mentalPTSD:
     m 3eua "When you think of PTSD you usually think of war, right?"
     m 3eub "While it is a common thought that war can cause PTSD. {w=0.2}{nw}"
     extend 3eud "That is just often not the case."
-    m 1euc "Almost all cases of PTSD stem from great amounts of stress or trauma!"
-    m 2eud "To put it bluntly, any person who has encountered a traumatic event of any kind has a chance of developing PTSD."
+    m 1euc "Almost all cases of PTSD stem from a great sudden or constant trauma or stress."
+    m 2eud "To put it bluntly, any person always in a very stressful setting, or someone who suddenly goes through something very traumatic, has a chance of developing PTSD."
     m 3euc "Do you know what PTSD stands for [player]?"
-    m 7rtd "Well the acronym PTSD stands for Post Traumatic Stress Disorder, and with the name, the defintion is essentially given."
-    m 1eksdrc "PTSD is a mental disorder that occurs after a traumatic event. {w=0.3}{nw}"
-    extend 3eksdru "Not a very descriptive defintion, is it [mas_get_player_nickname()]?"
-    m 3ekc "Well PTSD is described to naturally occur after a traumatic event takes place."
-    m 3ekd "However, PTSD is usually only diagnosed when it becomes Chronic. You see [player], in most cases when we go through a traumatic experience our mind will overcome and heal from this naturally overtime."
-    m 1esd "This is why you don't have nightmares about graphic childhood injuries. {w=0.2}{nw}"
-    extend 3esc "This is also why, not every dangerous experience you have can give you PTSD."
-    m 1ekc "The event just has to have such an immense impact on your mind that it can't fully process and move on from it." 
-    m 1dkd "The worst part is, people are only able to recieve a diagnosis of PTSD a year after symptoms are recognized."
+    m 7rtd "Well the acronym PTSD stands for Post-Traumatic Stress Disorder, and with the name, the defintion is essentially given."
+    m 1eksdrc "PTSD is a mental disorder that can occur after constant stress, anxiety, or sudden traumatic incidents. {w=0.3}{nw}"
+    extend 3eksdrc "Sounds pretty messed up, doesn't it [mas_get_player_nickname()]?"
+    m 3ekc "Well PTSD is described to naturally occur after a sudden traumatic event takes place."
+    m 3ekd "However, PTSD is usually only diagnosed when it begins to have significant effects on your daily life. You see [player], in most cases when we go through a traumatic experience, our mind can overcome these struggles with time."
+    m 1esd "This is why you don't have nightmares about childhood injuries. {w=0.2}{nw}"
+    extend 3esc "This is also why, not every bad experience can give you PTSD."
+    m 1ekc "The event just has to have such an immense impact on your mind that it can't fully process and move on from it. " 
+    extend 3ekc "Or be a constant part of your life, that it slowly overwhelms you, until you do anything you can to get away from it."
+    m 1dkd "The worst part is, people are only able to receive a diagnosis of PTSD a month after symptoms are recognized."
+
     if persistent._mas_pm_cares_about_dokis: # changes dialogue based on players response to insensitive jokes
         jump PTSDEnd
     else:
-        m 7ekd "Take Natsuki for example. Child abuse, no matter what type, is truamatic. Therefore she was likely to gain PTSD."
-        m 1rtd "Well, thinking back on it, she probably did have PTSD even if the symptoms hadn't fully developed until a few months after the occurence..."
+        m 7ekd "Take Natsuki for example. Child abuse, no matter what type, is traumatic. Therefore she was likely to gain PTSD."
+        m 1rtd "Well, thinking back on it, she probably did have PTSD even if the symptoms hadn't fully developed until a few months after the occurrence..."
         m 7etsdlc "I mean she started displaying avoidance behaviours with both Yuri and I. "
         extend 1rtsdlc "And her outbursts of frustration even got worse... {w=0.6}Specifically, the one with Yuri..."
-        m 2rksdra "Maybe I'm looking to deeply into this. She already did have outburts of anger and tended to read her manga by herself even before I got involved."
+        m 2rksdra "Maybe I'm looking too deeply into this. She already did have outburts of anger and tended to read her manga by herself even before I got involved."
+
 label PTSDEnd:
-    m 3eka "Anyways, if you have ever experienced something truamatic.{w=0.2} I hope you are getting the help you need, [mas_get_player_nickname()]."
+    m 3eka "Anyways, if you have ever experienced something traumatic.{w=0.2} I hope you are getting the help you need, [mas_get_player_nickname()]."
     m 1etd "And if it ever gets too bad... {w=0.2}{nw}"
     extend 5etbsa "Just remember, I'm always here for you and will always love you~"
 return "love"
@@ -236,6 +239,8 @@ label MentalBipolar:
     extend 3eub "so would you like to talk about it right now [player]?"
     $_history_list.pop()
     menu:
+        m "Talking about the differences in this mental disability can take a while, so would you like to talk about it right now [player]?{fast}" 
+        
         "Yes":
             m 1eub "I am really excited for this one!"
             m 3eua "Bipolar 1 is actually the most common form of bipolar [player]!"
@@ -339,5 +344,84 @@ label mentalProsopagnosia:
     m 1eua "Anyways, thank you for listening to me again, [player]."
 return
 
+init 5 python:
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="mentalOCD",
+            category=['mental illnesses', 'psychology'],
+            prompt="OCD",
+            conditional="mas_seenLabels(['mentalADHD', 'mentalhealthAutism'])",
+            random=True
+        )
+    )
+
+label mentalOCD:
+    m 1euc "You know, [player], I was looking more into ADHD and I found something interesting to me."
+    m 3eud "Have you ever heard of OCD? Or obsessive-compulsive disorder?"
+    m 1euc "Well, in short, it's exactly as it sounds, but it's effects are really broad."
+    m 7ekc "Take for example cleaning; Someone may normally just clean until something is {i}'good enough'{/i}, while those with OCD may try to always clean until the paint starts to come off."
+    m 1esc "Another example is someone with OCD may need to always sway when standing, otherwise they get really uncomfortable."
+    m 1husdla "I guess those examples don't really help now that I've said them out loud..."
+
+    m 3euc "Someone with OCD isn't always a tidy person, or someone who must always organize or do things a certain way."
+    m 7eud "It's a disorder where they must do some sort of repetitive action, or enact on some sort of intrusive thought, otherwise they become very anxious or agitated."
+    m 2etc "And this was what caused ADHD and OCD often be seen as the same thing, and also causes a lot of misdiagnoses between autism and adhd."
+    m 3etd "Since the symptoms are hard to tell apart from OCD and ADHD, and OCD can be seen as a autism spectrum disorder... {nw}"
+    extend 3rtc "You can see how complicated this gets, and pretty quickly too."
+    m 1euc "But what is even more interesting to me, is that OCD can be formed from fears, anxiety, and even your environment."
+    m 3wud "Since OCD is about {i}acting on compulsive thoughts{/i} to the point where they are a ritual... {nw}"
+    extend 4euc "It's not as simple as 'replacing that behavior' or thought."
+
+    m 7eud "OCD also has the inverse too, like intrusive thoughts changing negative ones to positive ones, or act as a way to cope with stressful situations."
+    m 1eud "In truth, OCD is mostly known for being learned from your environment growing up, but can also be part of other mental disabilties too."
+    m 3euc "That is why it is so difficult to get a proper diagnoses of OCD, not only can it be similiar to a {i}tic{/i}, it can also be similiar to repeat actions people with other disabilities may do normally."
+    m 3eud "And not to mention, many who do have it, may not even be aware that they have OCD. Since it can be something as simple as rocking back and forth."
+    m 7euc "All of these factors makes it very difficult for people who actually have OCD to get the help they need."
+    m 6ruc "Which is pretty dire to think about... {w=3.5}{nw}"
+    extend 6eud "However, psychology is always evolving too. So that may change too."
+    m 1eua "Anyway, I do highly recommend looking more into OCD if you have the time, [player]. It one of the most interesting things I have come across."
+    m 1eua "Just remember to always check your sources, [mas_get_player_nickname()]."
+return
+
+
+init 5 python:
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="mentalSAD",
+            category=['mental illnesses', 'psychology'],
+            prompt="Seasonal Depression",
+            conditional="mas_seenLabels(['MentalBipolar', 'mentalhealthAutism'])",
+            random=True
+        )
+    )
+
+label mentalSAD:
+    m 1etc "Hmmm..."
+    m 3euc "I am more than sure you have heard of '{i}Seasonal Depression{/i}' before, right [player]?"
+    m 7esd "Well, I recently discovered that this is a {i}spectrum disorder{/i}. Which in turn, means this can effect others to the point where they cannot function normally during it."
+    m 1euc "It's official term is actually {i}Seasonal Affective Disorder{/i}, which is commonly abbreviated to just SAD or Seasonal Depression."
+    m 3euu "As silly as that abbreviation is, it's effects are very real, [player]."
+    m 7wtd "It actually develops from something you might not expect:{w=1}{nw} "
+    extend 7etb "Light."
+    m 1rtsdru "Okay, I am oversimplifying a little bit. {w=1.2}{nw}"
+    extend 3etd "Though the reduced sunlight from the seasons changing can cause imbalances in your sleep, which in turn effects a lot of other parts of your brain."
+    m 1euc "And this is also true for the inverse too. Suddenly getting more sunlight when your body is used to less sunlight, can cause the opposite ends of things to occur."
+    m 2ekd "With winter based SAD bringing issues like over-eating, over-sleeping, and low energy. Summer SAD brings under-eating, insomnia, and manic effects."
+    m 7etc "This is by far one of the most common disorders, but remember when I said it was a spectrum disorder, [player]?"
+    m 6eud "Well, SAD is often biological, since it is directly tied to your brain's signals and chemicals. {nw}"
+    extend 7eud "Which means that the {i}strength{/i} of SAD is also partly biological."
+    m 1lkc "Though, since this disability is based on brain signals, other disabilities that also effect emotions, like autism or bipolar disorder, can worsen these effects."
+
+    m 3esd "Like with all forms of depression though, it is possible to help soften these effects too, [player]."
+    m 1eud "The best way to handle it, is to watch what you eat, and how you take care of yourself. {nw}"
+    extend 3euc "Such as eating foods with Vitamin D, paying attention to your sleeping patterns, and taking notes of how you feel after the day."
+    m 1euc "Usually if you can't recall a day with a good moment for months at a time, it is a good idea to talk to a professional."
+    m 1hksdlb "I know, I sound like a research paper or something, but I do truly care for you, [mas_get_player_nickname()]. I want to remind you how important mental health is."
+    m 3hub "So, if you ever feel the big SAD coming on, don't let yourself go bad!"
+    m 1hksdlb "Oh gosh, that was super embarrassing. {w=1}{nw}"
+    m 1eua "But I hope the message came across, [player]."
+return
 
 
