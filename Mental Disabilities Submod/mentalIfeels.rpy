@@ -1,5 +1,5 @@
 init 5 python:
-    addEvent(Event(persistent._mas_mood_database,eventlabel="mentalhealth_isolated",prompt="...like I don't belong anywhere...",category=[store.mas_moods.TYPE_BAD],unlocked=True),code="MOO")
+    addEvent(Event(persistent._mas_mood_database,eventlabel="mentalhealth_isolated",prompt="...like I don't belong.",category=[store.mas_moods.TYPE_BAD],unlocked=True),code="MOO")
 
 label mentalhealth_isolated:
     m 1ekc "I'm sorry you feel that way."

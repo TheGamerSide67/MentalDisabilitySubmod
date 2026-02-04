@@ -175,14 +175,18 @@ init 5 python:
             eventlabel="mentalmeditation",
             category=['coping skills'],
             prompt="Meditation",
-            conditional="mas_seenLabels(['mentalADHD'])",
+            conditional="mas_seenLabels(['mentalADHD', 'monika_meditation'])",
             random=True
         )
     )
+#TODO Rewrite this to better fit the dialogue already in the game
+#When was first written, I glossed over the fact Monika already talked about it
+#monika_meditation
 
 label mentalmeditation:
-    m 3eua "Have you ever heard of meditation, [player]?"
-    m 1eub "Meditation is the act of balancing your emotions and staying in touch with your surroundings."
+    m 3eua "You remember when we talked about meditation right, [player]?"
+    m 1eub "Well I never went into proper detail about what meditation is, and how it can help you, have I?" 
+    m "Well, meditation is the act of balancing your emotions and staying in touch with your surroundings."
     m 7eud "While it may sound interesting at first, it takes a lot of commitment and effort to actually meditate."
     if persistent._mental_player_has_ADHD == True:
         m 3rusdld "This is because it will be really hard for you to sit still for long periods of time. "
@@ -279,6 +283,7 @@ label mental_trends:
     m 1eud "Which makes me want to know something..."
     m "Do you ever change your interests just to fit in with more people, [player]?"
     menu:
+        m "Do you ever change your interests just to fit in with more people, [player]?{fast}"
         "No":
             m 3eusdla "Oh, good."
             m 1eud "I really don't want you to feel like you have to change who you are to fit in with others."
@@ -452,7 +457,7 @@ init 5 python:
     )
 
 label mental_nailbiting:
-    m 1euc "Say, [player]...{w=0.8} Do you bite your nails?"
+    m 1euc "Say, [player]...{w=1.8} Do you bite your nails?"
     m 3hub "Ahaha, I know this sounds a bit silly out of nowhere, but it is a real concern."
     m 3euc "Some people bite their nails to distract themselves from their anxiety or stress."
     m 1ruc "Sometimes to the point where they start to bleed..."
@@ -493,4 +498,179 @@ label mental_streisand_effect:
 
     m 1eub "It just means that you should take your flaws with pride. {nw}"
     extend 1eua "So accept and overcome them, instead of needing to control or hide them."
+return
+
+init 5 python:
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="mental_brainagegame",
+            category=['psychology', 'media'],
+            prompt="The Brain Age Series",
+            random=True
+        )
+    )
+
+
+label mental_brainagegame:
+    m 3eua "You know, I have seen some pretty interesting things around, [player]."
+    m 7wud "For example, did you know a real and official Japanese neuroscientist made an entire game series?"
+    m 1husdla "I know, it sounds pretty silly, most people may assume the game is only for learning..."
+    m 3eua "But I mention this, because that game series is actually called {a=https://en.wikipedia.org/wiki/Brain_Age:_Concentration_Training}{i}{u}'Brain Age'{/u}{/i}{/a}."
+    m 7eud "The release that I linked you to, is an installment of the series that mentions a pretty interesting point. "
+    extend 1ruc "I find myself thinking about it a lot more myself too now."
+    m 1euc "The point the game makes is that technology has drastically decreased our attention spans, and brain functions."
+    m 3husdlb "Ahaha, it's no where near as dire as it sounds, I promise, [mas_get_player_nickname()]."
+    m 4eub "Though, these games actually do teach you some pretty interesting things, in a way that is engaging to the player. "
+    if renpy.random.randint(1,5) == 5:
+        extend 1tubla "I bet that reminds you of someone, [player].{nw}"
+        $_history_list.pop()
+    m 3eub "For example, reaching daily streaks can reward you with some comedic, yet informative info-bits. "
+    extend 7hub "There is even a trophie room to show off your accomplishments!"
+    m 3eub "It even has a mode to play the paino! {w=1.2}{nw}"
+    extend 3rusdrb "Well, not exactly, ahaha-"
+    m 7eud "I know it may sound boring, but there are very legimate things that even I have learned from the game series."
+    m 1eua "Anyway, consider checking it out, [player]."
+return
+
+init 5 python:
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="mental_misleading_truths",
+            category=['psychology', 'media'],
+            prompt="Misleading Statistics",
+            random=True
+        )
+    )
+
+label mental_misleading_truths:
+    m 1euc "Something has been on my mind a lot lately..."
+    m 3eud "Are you aware of something called {i}Statistical Data?{/i}?"
+    m 7esd "I wouldn't be surprised if you did, however I am more so focused on ways that the truth can be changed into something completely false!"
+    m 1euc "Believe it or not, but when browsing the internet, I came across a comedian who brought this to my attention. {w=1}{nw}"
+    extend 3eud "That comedian was {a=https://en.wikipedia.org/wiki/Louis_C.K.}{i}{u}Louis C.K.{/u}{/i}{/a}."
+    m 7euc "The example he gave to his audience was a comparison to the population of China--1.8 Billion people, {nw}"
+    extend 1euc "and compared that to child birth."
+    m 3eud "He warned that numbers and statistics can always be shaped like this, and explains that many companies already do this."
+    m 1ruc "I think it's a little lame to mislead people like that."
+    m 1euc "But it is also important that people become aware of this..."
+    m 3esu "It's kind of similiar to malicious compliance, actually."
+    m 1euc "But, I should probably save that for another time, [player]."
+return
+
+init 5 python:
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="mental_pennames",
+            category=['psychology', 'media', 'mental illnesses'],
+            prompt="Reason for Pen Names",
+            conditional="mas_seenLabels(['monika_penname'])",
+            random=True
+        )
+    )
+
+label mental_pennames:
+    m 1euc "Say, [player]. Remember when I mentioned pen names to protect identity of the writer?"
+    m 3etc "It turns out there was a similar thing when it came to research papers for mental disabilties."
+    m 7rkc "I think it's pretty saddening to know that discoveries were treated differently, based on the gender or race of someone..."
+    m 1etd "Many disabilities that were originally discovered, weren't by the person who has their name on the paper,{nw}"
+    extend 3wuo " but rather someone else!"
+    m 7eud "I was a little surprised when I found out about this, [player]."
+    m 2efd "Like, imagine discovering a cure for cancer, but because of where you were born, it would be discredited..!"
+    m 1dfc "...{w=3}{nw}"
+    m 1eud "Sorry, [player]. I got a little heated there."
+    m 3euc "Though, times were certainly different then, weren't they?"
+    m 7eud "Now, research typically doesn't have this problem anymore."
+    extend 1eta " Thankfully the world is a lot less divided when it comes to literature and science."
+    m 1eua "Thank you, [mas_get_player_nickname()], for listening."
+return
+
+init 5 python:
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="mental_playercopingskills",
+            category=['psychology', 'coping skills'],
+            prompt="[player]'s Coping Skills",
+            conditional="mas_seenLabels(['monika_anxious', 'mentalhealth_escapism'])",
+            random=True
+        )
+    )
+
+label mental_playercopingskills:
+    m 1eua "Hey, [player], a pretty important thought just came to me..."
+    m 1eud "How do you actually cope..?"
+    m 3husdrb "Sorry, you were probably expecting a pop-up or something, but it's more rhetorical for me--"
+    m 7euc "I meant, like for you to ask yourself--How do you cope?"
+    m 3eud "Most people tend to not have a real sense of direction; An idea on what helps them become {i}grounded{/i} when they need to be."
+    m 7euc "Others tend to rely on support groups more than themselves..."
+    m 1dtc "...{w=2}{nw}"
+    m 1eud "I guess what I am saying is; I am worried you may not have a healthy coping skill, [player]."
+    m 3ekc "Many people are not taught proper coping skills, and tend to let the feeling or thought pass..."
+    m 7esd "Now I am not saying that isn't a bad thing all the time, I just want to know..."
+    m 6euc "Do you have a healthy coping skill that you do on your own?"
+    menu:
+        m "Do you have a healthy coping skill that you do on your own?{fast}"
+
+        "No":
+            m 6dkd "I thought so..."
+            m 7euc "I really hope you aren't escaping from your situation too often..."
+            m 1euc "Whatever it is, [player]. Just remember that writing down how you feel, or talking to someone, is a coping skill if you don't realize it."
+            $ persistent._mental_nocopingskills = True
+        
+        "Yes":
+            m 6hua "Oh, that's a relief."
+            m 7eud "I am glad you have your own personal way to manage yourself."
+
+        "I have you!":
+            m 6htsdla "[player]..."
+            m 7eusdld "You know I can only do so much, I can't be your {i}only{/i} coping skill."
+            m 3euc "There are tons of free resources, you know. "
+
+    m 7euc "Though it does sadden me that coping skills are not seen as something worthwhile to teach..."
+    m 1eud "Coping skills are very important to helping you control your emotions and yourself in life."
+    m 3esc "I am sure you already know that, [player]."
+    m 1esc "Anyways, "
+
+    if persistent._mental_nocopingskills == True:
+        extend 3eud "make sure to balance how you cope with things, okay?"
+        m 7euc "Calming down is not the same as running away, but never taking on problems will result in an endless cycle."
+    
+    else:
+        extend 3eud "remember to keep yourself open to learning more coping skill!"
+        m 7eua "And remember that not all skills are a one size fits all; Experiement to find what works best for you."
+
+    m 1eka "Thank you for letting me know though, [player]."
+return
+
+init 5 python:
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="mental_maliciouscompliance",
+            category=['phiilosphy', 'media', 'misc'],
+            prompt="Malicious compliance?",
+            conditional="mas_seenLabels(['mental_misleading_truths'])",
+            pool=True
+        )
+    )
+
+label mental_maliciouscompliance:
+    m 1eud "Oh, right I did mention that, didn't I, [player]?"
+    m 3eta "Well, malicious compliance is in the name--You comply with a request in a purposefully malicious way."
+    m 1euc "Though the way it is malicious is often different depending on context, and is usually a way to protest."
+    m 3eub "The biggest example that comes to mine is an artist named {i}Lowell Darling{/i} and the 'hobby loss rule'."
+    m 7euc "The artist made an art peice that showed the absurdity of the rule I mentioned earlier, and more importantly was a protest."
+    m 1esc "Lowell protested by following the new hobby loss rule exactly as it was written. {w=1.2}{nw}"
+    extend 3rtd "Well, that and the art itself was also a critique on the new rule."
+    m 1eud "It caught my attention because Lowell written and performed his own performance poetry during his protest." 
+    m 3eub "His poetry was performed to tell others that individuality should not be sacraficed because of rules, and freedom should be a priority in society."
+    m 1esc "While I do wish I could quote him directly, {nw}"
+    extend 3eud "he does bring up points that shows that rules will always have some sort of limitation, for better or worse."
+    m 7ekc "If you do want to read his own words, it's not in the public domain."
+    m 1eub "Anyway, I do find his movement interesting. And I do hope to see more progress in his protests."
+    if mas_isMoniHappy(higher=True):
+        m 1hubsa "But what I hope to see the most of, is my [player]~"
 return

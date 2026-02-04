@@ -47,13 +47,13 @@ init 5 python:
     )
 
 label mental_PTSD_Anxietyfunfact:
-    m 3eua "Did you know that PTSD is considered an anxiety disorder?"
+    m 3eua "Did you know that PTSD used to be considered an anxiety disorder?"
     m 1ruc "It seems pretty self explanitory when you think about it, so maybe you did."
-    m 7euc "Anyways, the reason why PTSD is considered an anxiety disorder is because of the constant fear that whatever happened, can happen again."
-    m 1eud "Compared to an anxiety disorder that has the constant fear of the {i}possibility{/i} of something ever happening."
-    m 1eua "There is always more to disorders than what you think, and they are all connected in a way."
+    m 7euc "Anyways, the reason why PTSD was considered an anxiety disorder is because of the constant fear that whatever happened, can happen again."
+    m 1eud "Compared to an anxiety disorder that has the constant fear of the {i}possibility{/i} of something going wrong."
+    m 3eua "Now PTSD is considered independant from anxiety disorders since 2013, but most studies on it have yet to update their wording."
+    m 1eua "It just goes to show that the psychology field is always advancing."
     call mas_fun_facts_end
-return
 
 init 5 python:
     addEvent(
@@ -73,5 +73,19 @@ label mental_conformist_trendsFF:
     m 1duc "It's a pretty negative spiral to get into."
     m 1eua "Anyways, I think I am getting off track here."
     call mas_fun_facts_end
-return
 
+init 5 python:
+    addEvent(
+        Event(
+            persistent._mas_fun_facts_database,
+            eventlabel="mental_Anxeity_Disorders",
+        ),
+        code="FFF"
+    )
+
+label mental_Anxeity_Disorders:
+    m 3eua "Did you know that most anxiety disorders actually stem from one of three major parts of your life?"
+    m 7eud "Those three are social, environmental, and psychological."
+    m 3euc "So in theory, this means all stresses in your life can boil down to one of three labels."
+    m 7eud "Though that doesn't mean anxiety or stress isn't a real concern!"
+    call mas_fun_facts_end
