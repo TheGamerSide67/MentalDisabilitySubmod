@@ -100,7 +100,7 @@ init 5 python:
             eventlabel="mentalhealthAutism",
             category=['media', 'mental illnesses'],
             prompt="Autism",
-            conditional="mas_seenLabels(['mentalADHD'])",
+            conditional="seen_event('mentalADHD')",
             random=True
         )
     )
@@ -312,7 +312,7 @@ init 5 python:
             eventlabel="mentalProsopagnosia",
             category=['media', 'mental illnesses'],
             prompt="Prosopagnosia",
-            conditional="mas_seenLabels(['mentalhealthAutism'])",
+            conditional="seen_event('mentalhealthAutism')", #Seen event is for single topics, seen lables is for multiple
             action=EV_ACT_RANDOM
         )
     )
@@ -351,7 +351,7 @@ init 5 python:
             eventlabel="mentalOCD",
             category=['mental illnesses', 'psychology'],
             prompt="OCD",
-            conditional="mas_seenLabels(['mentalADHD', 'mentalhealthAutism'])",
+            conditional="mas_seenLabels(['mentalADHD', 'mentalhealthAutism'], seen_all=True)", #seen all requires all topics to be seen, not just one on the list
             random=True
         )
     )
@@ -392,7 +392,7 @@ init 5 python:
             eventlabel="mentalSAD",
             category=['mental illnesses', 'psychology'],
             prompt="Seasonal Depression",
-            conditional="mas_seenLabels(['MentalBipolar', 'mentalhealthAutism'])",
+            conditional="mas_seenLabels(['MentalBipolar', 'mentalhealthAutism'], seen_all=True)",
             random=True
         )
     )
@@ -425,3 +425,55 @@ label mentalSAD:
 return
 
 
+init 5 python:
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="mentalBorderlinePD",
+            category=['mental illnesses', 'psychology'],
+            prompt="BPD",
+            conditional="mas_seenLabels(['MentalBipolar', 'mentalhealth_Anxiety', 'mentalPTSD', 'mental_painful_hearts'], seen_all=True)",
+            random=True
+        )
+    )
+
+label mentalBorderlinePD:
+    m 3eua "Remember when I mentioned about the different kind of pains people go through?{w=2}{nw}"
+    extend " And when I also mentioned how these pains are normally handled?"
+    m 3euc "Normally, they just become a memory, right?"
+    m 1etc "Well, it made me wonder...{w=1.2} What if the pain was constant?{w=0.5} Or what if it was something that consistently happened to someone?"
+    m 3eud "Would they stop reacting to it altogether, or would they react a different way?"
+    m 7euc "Well, [player], it turns out, it's really harmful for a constant pain to bother you.{w=1} Emotional or not."
+    m 2eud "These longer term pains can cause something called {i}Borderline Personality Disorder{/i}."
+    m 1rusdlb "Don't worry, it's nothing like another disability you are thinking of."
+    m 3eua "Borderline Personality Disorder--Or BPD--is often confused for Split Personality Disorder, only because of the name."
+    m 1eua "BPD has a lot of similarities between Bipolar Disorders and PTSD."
+    m 7husdra "I know, I sound like a teacher, don't I, [player]? Ahaha-"
+    m 1eud "Anyway, [player], BPD often happens from repeated truama or abuse. {nw}"
+    extend 3euc "Sounds simple, right?{w=1.2} Well, not quite, [player]."
+    m 1duc "The disability can form from a long period of solitude, and many other things that many people don't usually give a second thought."
+    m 1euc "Take for example, seperating a '{i}problem{/i}' from everyone else."
+    m 3eud "Pointing someone out, and making their mistakes be treated as if they are unforgiveable, enough times, could also cause this."
+    m 7ekd "Since BPD comes from repeated exposure, it also leads to self-esteem issues too."
+    if not persistent._mas_pm_cares_about_dokis:
+        m 1esc "Take for example Natsuki."
+        extend 3euc "With everything she has gone through, I wouldn't be surprised if instead of developing PTSD like I said earlier, it was actually signs of BPD."
+        m 1eud "It would more accurately describe the outbursts we seen, and the quick attachment she had towards you."
+        jump MBPDEnd
+
+    else:
+        jump MBPDEnd
+
+
+label MBPDEnd:
+    m 1husdrb "I am probably overthinking it anyway, [player]."
+    m 3euc "Though, this disability is often {i}under-diagnosed{/i}, and it's very destructive to who is effected by it. "
+    extend 1wud "Not to mention how difficult it is to eventually live a much more stable life with this disability."
+    m 1eua "I really encourage you to look into it more yourself, [mas_get_player_nickname()].{nw}"
+    extend 3eub " And thank you for listning to me, like always."
+return
+
+
+
+##ToDo, talk about Fetal Alcohol Spectrum Disorders (Or FASD)
+##ToDo, talk about DID (Split personality) after BPD, talk about the few simularities, then explain how they are fundamentally different
