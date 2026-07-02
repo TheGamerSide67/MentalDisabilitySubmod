@@ -54,6 +54,7 @@ label mental_PTSD_Anxietyfunfact:
     m 3eua "Now PTSD is considered independant from anxiety disorders since 2013, but most studies on it have yet to update their wording."
     m 1eua "It just goes to show that the psychology field is always advancing."
     call mas_fun_facts_end
+return
 
 init 5 python:
     addEvent(
@@ -73,6 +74,7 @@ label mental_conformist_trendsFF:
     m 1duc "It's a pretty negative spiral to get into."
     m 1eua "Anyways, I think I am getting off track here."
     call mas_fun_facts_end
+return
 
 init 5 python:
     addEvent(
@@ -89,3 +91,4 @@ label mental_Anxeity_Disorders:
     m 3euc "So in theory, this means all stresses in your life can boil down to one of three labels."
     m 7eud "Though that doesn't mean anxiety or stress isn't a real concern!"
     call mas_fun_facts_end
+return

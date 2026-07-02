@@ -4,7 +4,7 @@ init -990 python:
         author="TheGamerSide67",
         name="Mental Disabilities Submod",
         description="A large submod dedicated to the talk of philosophy and mental disabilites and more!",
-        version="1.4.1",
+        version="1.4.3",
     )
 
 # Register the updater

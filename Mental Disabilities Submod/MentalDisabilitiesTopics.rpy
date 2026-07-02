@@ -5,7 +5,7 @@ init 5 python:
             eventlabel="mentalmaskingdisability",
             category=['media', 'mental illnesses', 'philosophy'],
             prompt="Masking Autism",
-            conditional="mas_seenLabels(['mentalhealthAutism'])",
+            conditional="seen_event('mentalhealthAutism')",
             random=True
         )
     )
@@ -103,7 +103,7 @@ init 5 python:
             eventlabel="mental_fictional_characters_aging",
             category=['philosophy', 'media', 'monika'],
             prompt="Aging of fictional characters",
-            conditional="mas_seenLabels(['monika_immortal'])",
+            conditional="seen_event('monika_immortal')",
             random=True
         )
     )
@@ -175,7 +175,7 @@ init 5 python:
             eventlabel="mentalmeditation",
             category=['coping skills'],
             prompt="Meditation",
-            conditional="mas_seenLabels(['mentalADHD', 'monika_meditation'])",
+            conditional="mas_seenLabels(['mentalADHD', 'monika_meditation'], seen_all=True)",
             random=True
         )
     )
@@ -234,7 +234,7 @@ init 5 python:
             eventlabel="mentalemotionalmusic",
             category=['media', 'philosophy'],
             prompt="Feeling of music",
-            conditional="mas_seenLabels(['mentaldementia'])",
+            conditional="seen_event('mentaldementia')",
             random=True
         )
     )
@@ -324,7 +324,7 @@ init 5 python:
             eventlabel="mental_autism_media",
             category=['media', 'mental illnesses'],
             prompt="Autism in media",
-            conditional="mas_seenLabels(['mentalschizophrenia'])",
+            conditional="seen_event('mentalschizophrenia')",
             random=True
         )
     )
@@ -360,7 +360,7 @@ init 5 python:
             eventlabel="mental_painful_hearts",
             category=['psychology', 'philosophy'],
             prompt="Painful Hearts",
-            conditional="mas_seenLabels(['mentalPTSD'])",
+            conditional="seen_event('mentalPTSD')",
             random=True
         )
     )
@@ -409,7 +409,7 @@ init 5 python:
             eventlabel="mental_desensitization",
             category=['psychology', 'media'],
             prompt="Desensitization",
-            conditional="mas_seenLabels(['mental_autism_media', 'mental_trends', 'monika_social_norms','monika_pleasure'])",
+            conditional="mas_seenLabels(['mental_autism_media', 'mental_trends', 'monika_social_norms','monika_pleasure'], seen_all=True)",
             random=True
         )
     )
@@ -451,7 +451,7 @@ init 5 python:
             eventlabel="mental_nailbiting",
             category=['coping skills', 'psychology'],
             prompt="Nail biting",
-            conditional="mas_seenLabels(['monika_anxious'])",
+            conditional="seen_event('monika_anxious')",
             random=True
         )
     )
@@ -566,7 +566,7 @@ init 5 python:
             eventlabel="mental_pennames",
             category=['psychology', 'media', 'mental illnesses'],
             prompt="Reason for Pen Names",
-            conditional="mas_seenLabels(['monika_penname'])",
+            conditional="seen_event('monika_penname')",
             random=True
         )
     )
@@ -594,7 +594,7 @@ init 5 python:
             eventlabel="mental_playercopingskills",
             category=['psychology', 'coping skills'],
             prompt="[player]'s Coping Skills",
-            conditional="mas_seenLabels(['monika_anxious', 'mentalhealth_escapism'])",
+            conditional="mas_seenLabels(['monika_anxious', 'mentalhealth_escapism'], seen_all=True)",
             random=True
         )
     )
@@ -650,9 +650,9 @@ init 5 python:
         Event(
             persistent.event_database,
             eventlabel="mental_maliciouscompliance",
-            category=['phiilosphy', 'media', 'misc'],
+            category=['philosophy', 'media', 'misc'],
             prompt="Malicious compliance?",
-            conditional="mas_seenLabels(['mental_misleading_truths'])",
+            conditional="seen_event('mental_misleading_truths')",
             pool=True
         )
     )
@@ -674,3 +674,36 @@ label mental_maliciouscompliance:
     if mas_isMoniHappy(higher=True):
         m 1hubsa "But what I hope to see the most of, is my [player]~"
 return
+
+
+
+init 5 python:
+    addEvent(
+        Event(
+            persistent.event_database,
+            eventlabel="mental_Enclothed_Cognition",
+            category=['psychology', 'you'],
+            prompt="Enclothed Cognition",
+            conditional="mas_seenLabels(['mental_playercopingskills', 'monika_mentalillness', 'monika_hygiene'], seen_all=True)",
+            random=True
+        )
+    )
+
+label mental_Enclothed_Cognition:
+    m 1eua "Have you ever felt more in control or aware of your surroundings because you dressed differently one day?"
+    m 1husdrb "Ahaha, I know this is coming out of nowhere, but it is a very real thing!"
+    m 3eua "A concept called Enclothed Cognition, is the idea that dressing a new or intentional way can change the way you feel or think about the world around you."
+    m 1eua "This can also extend to taking a bath or shower. Or something as simple as wearing socks and shoes."
+    m 7eud "This ties into your mental health too, [player]."
+    m 2euc "Not taking care of yourself, or changing your routine in any way can help worsen the effects of depression."
+    m 3etd "This is why I suggested to at least wash yourself down with a washcloth, [mas_get_player_nickname()].{w=1.2} It truly does help."
+    m 1eka "Taking small steps can help you feel like you are in control of your life, even if they aren't grandiose acts."
+    m 1eua "So make sure to take care of yourself, or try out some new clothing every once in a while, [player]."
+return
+
+
+
+##------All topics for later updates
+##Todo add talks about Project Mirai and Sekai (Side note, play more Sekai to learn more about the Tomodachi system)
+##ToDo, intent vs interpretation -> Make this about overthinking how interactions go
+##ToDO; SHorthands, and how doctors may use them which is why their handwriting looks messy
