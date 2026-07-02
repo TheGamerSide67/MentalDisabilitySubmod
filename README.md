@@ -1,14 +1,14 @@
 # MentalDisabilitySubmod
 A submod for Monika After Story that talks about mental disabilities and philosophy!
 
-Current Version: 1.4.1!
+Current Version: 1.4.3!
 
--Fixed issues with Fun Facts not ending correctly
--Fixed Grammar and spelling mistakes
--Added new dialogue!
--Removed credits for those who did not help
--Chibika stole some cookies
--Began plans on revamping the checksups
+- Fixed issues with Fun Facts not ending correctly
+- Fixed Grammar and spelling mistakes
+- Added new dialogue!
+- Entered Support mode for the submod
+- Fixed dialogues appearing out of order
+- Got my cookies back from chibika
 
 This is the release of the Mental Disability Submod for Monika After Story (MAS)
 
