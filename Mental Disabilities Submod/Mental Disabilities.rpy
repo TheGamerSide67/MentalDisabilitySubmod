@@ -144,7 +144,7 @@ label mentalschizophrenia:
     m 1rkc "It can drive them insane... {w=0.3}{nw}"
     extend 1rksdld "Especially if they are voices."
     m 3eud "Even if they don't have delusions all of the time, they have a more literal thought process."
-    m 1eub "It's kind of similiar to ADHD actually! "
+    m 1eub "It's kind of similar to ADHD actually! "
     extend 1rusdlb "Well, kind of..."
     m 3eud "While they do jump between conversations all the time, this is only because it is hard for them to know {i}exactly{/i} what you are talking about."
     m 1euc "This isn't because they don't know what you are talking about, but because they form connections from things you might not have thought about."
@@ -375,7 +375,7 @@ label mentalOCD:
 
     m 7eud "OCD also has the inverse too, like intrusive thoughts changing negative ones to positive ones, or act as a way to cope with stressful situations."
     m 1eud "In truth, OCD is mostly known for being learned from your environment growing up, but can also be part of other mental disabilties too."
-    m 3euc "That is why it is so difficult to get a proper diagnoses of OCD, not only can it be similiar to a {i}tic{/i}, it can also be similiar to repeat actions people with other disabilities may do normally."
+    m 3euc "That is why it is so difficult to get a proper diagnosis of OCD, not only can it be similar to a {i}tic{/i}, it can also be similar to repeat actions people with other disabilities may do normally."
     m 3eud "And not to mention, many who do have it, may not even be aware that they have OCD. Since it can be something as simple as rocking back and forth."
     m 7euc "All of these factors makes it very difficult for people who actually have OCD to get the help they need."
     m 6ruc "Which is pretty dire to think about... {w=3.5}{nw}"

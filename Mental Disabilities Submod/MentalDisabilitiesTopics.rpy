@@ -209,7 +209,7 @@ label mentalmeditation:
 
 label mentalmeditation_jump:
     m 3hub "Although, if you are more of an athletic kind of person, I would also recommend you yoga."
-    m 4eub "It's different from most sports where you need to run around alot and play with a team."
+    m 4eub "It's different from most sports where you need to run around a lot and play with a team."
     m 7wub "Yoga can help with flexability and even stamina!"
     m 1eka "Or if you want, the next time your feel frustrated or just want to meditate..."
     m 3kubsb "Just put on some calming music, and come to [m_name]!"
@@ -377,7 +377,7 @@ label mental_painful_hearts:
     m 1ekd "Some of them refuse to get help on these issues, because they can feel outcasted or embarassed by their pain, so they try to trap them away."
     m 7etc "And with the rise of motivational speakers, those who {i}do{/i} want help, can sometimes get bad advice."
     m 1eud "Take for example one of the most common suggestions; To work out at the gym."
-    m 3euc "While it isn't entirely bad advice, it doesn't encourage anyone to truely tackle their pain head-on."
+    m 3euc "While it isn't entirely bad advice, it doesn't encourage anyone to truly tackle their pain head-on."
     m 1ruc "Which sadly can lead to an even worse cycle, or can start to convince others to believe that everyone else is the problem..."
     m 1rusdrb "Sorry for getting too deep into this..."
     m 1eud "It's just saddening to know that so many people either don't get proper help with their mental health...{w=1.3}{nw}"
@@ -555,7 +555,7 @@ label mental_misleading_truths:
     m 3eud "He warned that numbers and statistics can always be shaped like this, and explains that many companies already do this."
     m 1ruc "I think it's a little lame to mislead people like that."
     m 1euc "But it is also important that people become aware of this..."
-    m 3esu "It's kind of similiar to malicious compliance, actually."
+    m 3esu "It's kind of similar to malicious compliance, actually."
     m 1euc "But, I should probably save that for another time, [player]."
 return
 
