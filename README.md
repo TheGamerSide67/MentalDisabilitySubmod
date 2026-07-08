@@ -8,6 +8,7 @@ Current Version: 1.4.4!
 - Finally got a lid for the cookie jar to stop Chibika
 - Reworded some dialogue to flow better
 - Fixed dialogue occuring out of order for new mod installers
+- Fixed incorrect Binary uploads
 
 
 What is support mode?
