@@ -66,7 +66,7 @@ init 5 python:
     )
 
 label mental_conformist_trendsFF:
-    m 3eua "Did you know that someone who tries to always look good in everyone's eyes is called a [i]conformist[i/]?"
+    m 3eua "Did you know that someone who tries to always look good in everyone's eyes is called a [i]conformist[/i]?"
     m 7eud "A conformist, at it's basic term, means that a person cares most about their public image, rather than what they believe in."
     m 1rusdlb "It's kind of like an idol, or even a famous pop-star."
     m 1euc "Though there are more severe forms of conformism, it's usually something that isn't too bad."
