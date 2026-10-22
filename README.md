@@ -1,3 +1,7 @@
+## This place is now a resting site for TheGamerSide67 who passed away on August 4th, 2026. May their soul rest in peace.
+
+
+
 # MentalDisabilitySubmod
 A submod for Monika After Story that talks about mental disabilities and philosophy!
 
