@@ -10,16 +10,13 @@ Current Version: 1.5!
 - Added a new minigame that was dormant
 - Finished the last of TheGamerSide67's original work
 - Rest in Peace TheGamerSide67
+- Thanks to dreamscached for helping with some coding errors
 
 # This submod is an archive now, for all future updates, please see https://github.com/Friends-of-Monika/MentalDisabilitySubmod
 
 
 This is the release of the Mental Disability Submod for Monika After Story (MAS)
 
-If you ever come across any issues, please feel free to contact me on Discord, my username is as followed; TheGamerSide67
-Same thing if you have any suggestions, feel free to also contact me on Discord for those aswell!
-You can find the discord server here; https://discord.gg/Kc3m5Q4qQM
-You can also support me with Ko-fi; https://ko-fi.com/thegamerside67
 
 How to install the submod:
 
